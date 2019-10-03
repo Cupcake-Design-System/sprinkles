@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.c-input {
+  box-sizing: border-box;
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+
+spr-select-panel-items {
+  flex: 1 1 auto;
+  min-height: 0px;
+  height: 100%; // fix for ie-11 growing out of container bounds
+}

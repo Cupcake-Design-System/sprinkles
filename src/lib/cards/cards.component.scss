@@ -1,0 +1,30 @@
+div {
+  display: block;
+}
+
+//  ==========================================================================
+//  CUPCAKE OVERRIDES & ADDITIONS
+//  ==========================================================================
+.c-card-header-menu {
+  align-items: center;
+  display: flex;
+  padding-right: .9375rem;
+}
+.c-card-header-menu-icon {
+  color: #ced4da;
+  margin-left: 5px;
+  transition: all 300ms ease;
+}
+
+.c-card-header-menu-icon:hover {
+  background: transparent;
+  color: #097fd7;
+}
+
+.c-card-header-menu-icon-hover {
+  opacity: 0;
+}
+
+.c-card {
+  min-height: 300px;
+}

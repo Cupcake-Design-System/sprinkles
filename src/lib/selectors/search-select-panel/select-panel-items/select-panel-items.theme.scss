@@ -1,0 +1,13 @@
+spr-select-panel-items {
+  &.spr-focused {
+    ul {
+      > li.spr-current-item {
+        background-color: $color-gray-1;
+      }
+    }
+  }
+
+  .no-results-message, .too-many-results-message {
+    color: $color-gray-6 !important;
+  }
+}

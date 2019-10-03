@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3px;
+  min-height: 32px;
+
+  > .c-badge {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: calc(100% - 8px);
+
+    cursor: default;
+
+    > span {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    > i {
+      padding-left: 3px;
+      flex: 0 0 auto;
+      cursor: pointer;
+    }
+  }
+
+  > .no-items-message {
+    text-align: center;
+    width: 100%;
+    align-self: center;
+  }
+}

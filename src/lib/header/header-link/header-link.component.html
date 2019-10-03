@@ -1,0 +1,42 @@
+<a
+  *ngIf="!!params && params.hasOwnProperty('path')"
+  [href]="params.path"
+  routerLinkActive="c-header-item-link-active"
+  class="c-header-item-link"
+  [ngClass]="(params.classes || []).join(' ')"
+  [attr.data-automation-e2e-selector]="
+    'nav-item-' + params.hasOwnProperty('name') ? params.name : ''
+  "
+  ><img *ngIf="params.hasOwnProperty('imgPath')" [src]="params.imgPath" />
+  <ng-container *ngTemplateOutlet="innerContent"></ng-container>
+</a>
+<a
+  *ngIf="!!params && params.hasOwnProperty('event')"
+  href="javascript:void(0);"
+  (click)="params.event($event)"
+  class="c-header-item-link"
+  [ngClass]="(params.classes || []).join(' ')"
+  [attr.data-automation-e2e-selector]="
+    'nav-item-' + params.hasOwnProperty('name') ? params.name : ''
+  "
+>
+  <ng-container *ngTemplateOutlet="innerContent"></ng-container
+></a>
+
+<ng-template #innerContent>
+  <ng-container *ngIf="!!params && params.hasOwnProperty('name')">
+    <span
+      *ngIf="params.icon"
+      [ngClass]="'fa fa-' + params.icon"
+      aria-hidden="true"
+      [attr.data-automation-e2e-selector]="'nav-item-icon-' + params.name"
+    ></span>
+    <span
+      [attr.data-automation-e2e-selector]="'nav-item-title-' + params.name"
+      >{{ params.name }}</span
+    >
+  </ng-container>
+  <ng-container *ngIf="!!params && params.hasOwnProperty('innerHtml')">
+    <span [innerHtml]="params.innerHtml"></span>
+  </ng-container>
+</ng-template>

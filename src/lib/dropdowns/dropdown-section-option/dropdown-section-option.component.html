@@ -1,0 +1,4 @@
+<div class="c-d-flex c-justify-space-between noselect" [ngClass]="{'c-text-sm': !showIcon }">
+  <div [ngClass]="{'c-text-bold': showIcon}" [title]="showIdOnHover ? id : ''" [id]="optionId">{{text}}</div>
+  <div *ngIf="showIcon"><i class="fa fa-check" aria-hidden="true"></i></div>
+</div>

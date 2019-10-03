@@ -1,0 +1,64 @@
+// these styles pulled from ipreo/polaris
+// unneeded, but perhaps room for additional theming
+
+// :host {
+//   display: block;
+//   position: relative;
+//   z-index: 10;
+
+//   /deep/ .c-header {
+//     background-color: #0e334c;
+
+//     /* fix dropdown links from being overwritten white */
+//     /deep/ &.c-header-inverse .c-header-item .c-dropdown-list > li > a {
+//       color: #495057;
+//     }
+
+//     /* override header-item borders */
+//     /deep/ .c-header-item {
+//       border-color: rgba(255, 255, 255, 0.15);
+//     }
+
+//     /deep/ .c-header-center {
+//       justify-content: flex-start;
+//       margin: 0 1rem;
+//     }
+//   }
+// }
+
+// /**** Header Navigation ****/
+// .header-nav {
+//   /deep/ .c-header-item {
+//     display: inline-flex;
+//   }
+
+//   /deep/ .c-header-item-link {
+//     align-items: center;
+//     color: rgba(255, 255, 255, 0.8);
+//     font-size: 0.75rem;
+//     font-weight: bold;
+//     padding: 0.5rem 0.75rem;
+//     cursor: pointer;
+
+//     &:not(:last-child) {
+//       margin-right: 0.5rem;
+//     }
+
+//     .fa {
+//       font-size: 1rem;
+//       opacity: 0.25;
+//       margin-right: 0.5rem;
+//     }
+
+//     &-active,
+//     &:hover {
+//       background-color: #223e53;
+//       color: #ffffff;
+
+//       .fa {
+//         color: #1c7cd6;
+//         opacity: 1;
+//       }
+//     }
+//   }
+// }

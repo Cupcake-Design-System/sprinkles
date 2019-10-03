@@ -1,0 +1,5 @@
+<div class="c-submitting-animation"
+     *ngIf="animate">
+  <span>{{ submitText }}</span><i class="fas fa-circle-notch c-m-left-sm" aria-hidden="true"></i>
+</div>
+<ng-content *ngIf="!animate"></ng-content>

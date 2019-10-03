@@ -1,0 +1,20 @@
+<ul #itemParent *ngIf="!isLoading && !isEmpty && !isTooManyResults">
+  <li *ngFor="let wrappedItem of wrappedItems; trackBy: trackItems" #selectableItem
+    [ngClass]="{ 'spr-current-item': wrappedItem.isCurrent }">
+    <spr-checkbox style="display: block; width: 100%" [size]="size" [ngModel]="wrappedItem.isSelected"
+      (ngModelChange)="onSelectionChange(wrappedItem, $event)">
+      <span class="item-content c-m-right-xs">
+        <ng-container *ngTemplateOutlet="itemTemplate; context: wrappedItem"></ng-container>
+      </span>
+    </spr-checkbox>
+  </li>
+</ul>
+<div *ngIf="!isLoading && isEmpty" class="spr-info-container">
+  <span class="no-results-message c-text">{{noResultsMessage}}</span>
+</div>
+<div *ngIf="!isLoading && isTooManyResults" class="spr-info-container">
+  <span class="too-many-results-message c-text">{{tooManyResultsMessage}}</span>
+</div>
+<div *ngIf="isLoading" class="spr-info-container">
+  <spr-loader-basic diameter="1rem" thickness=".1rem"></spr-loader-basic>
+</div>

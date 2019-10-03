@@ -1,0 +1,22 @@
+:host {
+  display: inline-block;
+}
+
+label {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+
+  > input, i {
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  > .checkbox-content {
+    flex: 1 1 auto;
+    align-self: center;
+    min-width: 0;
+
+    padding-left: 3px;
+  }
+}

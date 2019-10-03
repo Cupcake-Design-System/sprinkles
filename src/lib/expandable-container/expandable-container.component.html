@@ -1,0 +1,13 @@
+<div>
+  <div id="title"
+       class="c-media-heading truncated">
+    <ng-content select="[title]"></ng-content>
+  </div>
+  <div id="expanded"
+       *ngIf="expanded"
+       @shrinkOut
+       (@shrinkOut.start)="onAnimationStart()"
+       (@shrinkOut.done)="onAnimationDone()">
+    <ng-content select="[expanded]"></ng-content>
+  </div>
+</div>

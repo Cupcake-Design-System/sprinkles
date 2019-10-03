@@ -1,0 +1,21 @@
+<div class="c-card-header">
+  <div
+    class="c-card-header-title noselect"
+    [ngClass]="{ draggable: draggable }">
+    <a class="c-a" [href]="headerLinkHref" *ngIf="headerLinkHref">
+      {{headerText}}
+    </a>
+    <span
+      *ngIf="!headerLinkHref"
+      class="c-text-black-5"
+      [ngClass]="{ draggable: draggable }">
+      <span class="c-text-6">{{headerText}}</span>
+    </span>
+  </div>
+</div>
+<div *ngIf="loading" class="c-card-content">
+  <div class="c-skeleton-loading"></div>
+</div>
+<div *ngIf="!loading" class="c-card-content">
+  <ng-content></ng-content>
+</div>

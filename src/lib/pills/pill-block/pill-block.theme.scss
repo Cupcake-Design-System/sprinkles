@@ -1,0 +1,21 @@
+spr-pill-block {
+  border: 1px solid $color-gray-4;
+  background-color: white;
+
+  .no-items-message {
+    color: $color-gray-6;
+  }
+
+  .c-badge {
+    background-color: $color-gray-3;
+    border: 1px solid $color-gray-3;
+
+    &:focus {
+      border-color: $color-primary-7;
+    }
+
+    &:hover {
+      background-color: $color-gray-4;
+    }
+  }
+}

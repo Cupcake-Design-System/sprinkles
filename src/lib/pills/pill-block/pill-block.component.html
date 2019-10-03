@@ -1,0 +1,11 @@
+<ng-container *ngIf="items.length > 0">
+  <span #itemElement *ngFor="let item of items; index as i; trackBy: itemsTrackFn"
+    [ngStyle]="{'max-width': maxPillWidth}" (focus)="onItemFocus(item)" class="c-badge c-badge-secondary c-m-xs c-bd-0"
+    tabindex="-1">
+    <span>
+      {{ item.text }}
+    </span>
+    <i class="fas fa-times fa-sm" (click)="removeItem(item)"></i>
+  </span>
+</ng-container>
+<span *ngIf="items.length === 0 && noItemsMessage" class="c-text no-items-message">{{noItemsMessage}}</span>

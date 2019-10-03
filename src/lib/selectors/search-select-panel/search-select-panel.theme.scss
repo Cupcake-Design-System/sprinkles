@@ -1,0 +1,8 @@
+spr-search-select-panel {
+  border: 1px solid $color-gray-4;
+  background-color: white;
+
+  .c-input.ignore-focus:focus {
+    border-color: $color-gray-5;
+  }
+}

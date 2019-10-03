@@ -1,0 +1,14 @@
+<spr-pill-block class="c-bd-top-0 c-bd-left-0 c-bd-right-0" [items$]="selectedItems$"
+  [noItemsMessage]="noItemsSelectedMessage" [focus$]="focusPills$" [maxPillWidthPx]="maxPillWidthPx"
+  (itemsChanged)="onSelectionChanged($event)" (moveFocus)="onMovePillsFocus($event)">
+</spr-pill-block>
+<spr-search-select-panel class="c-bd-0" [size]="size" [selectedItems$]="selectedItems$" [searchResult$]="searchResult$"
+  [itemTemplate]="itemTemplate" [search$]="search$" [noResultsMessage]="noResultsMessage"
+  [tooManyResultsMessage]="tooManyResultsMessage" [searchPlaceholder]="searchPlaceholder" [focus$]="focusSelector$"
+  [addSelectAll]="addSelectAll" [localFilter]="localFilter" [searchDebounceTimeMs]="searchDebounceTimeMs"
+  (searchChanged)="onSearchChanged($event)" (selectionChanged)="onSelectionChanged($event)"
+  (moveFocus)="onMoveSelectorFocus($event)" [ngStyle]="{ height: selectorHeight }">
+</spr-search-select-panel>
+<spr-rich-multiselect-action class="c-bd-top" *ngIf="action$ | async" [action$]="action$" [focus$]="focusActionPanel$"
+  (moveFocus)="onMoveActionPanelFocus($event)">
+</spr-rich-multiselect-action>

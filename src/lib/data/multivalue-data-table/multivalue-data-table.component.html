@@ -1,0 +1,96 @@
+<ng-container *ngIf="pinFirstColumn">
+  <div style="position: relative;">
+ <div class="scroll">  
+  <table class="c-table"
+  [ngClass]="{'c-bd': addBorder,
+              'c-table-transparent': !addZebraStriping,
+              'spr-multivalue-data-table-pinned': true}">
+  <thead *ngIf="headerText">
+      <th [ngClass]="getClonedHeaderClasses()" [attr.colspan]="columnCount+2" style="position: absolute; border-right: 0px;">{{headerText}}</th>    
+      <th [ngClass]="getHeaderClasses()" [attr.colspan]="columnCount+2">{{headerText}}</th>
+  </thead>
+
+  <tbody>
+
+    <ng-template #nodeTemplateRef let-node="node" let-isRoot="isRoot">
+        <tr *ngIf="isRoot !== true">
+            <td #labelCell 
+              [attr.colspan]="node.values === undefined ? columnCount + 2 : 1" 
+              [ngStyle]="{'padding-left.px': (node.level * 10)}"
+              [ngClass]="{'c-bd spr-multivalue-data-table-label-pinned-bd': addBorder,
+                          'c-text-bold': node.config && node.config.isBold,
+                          'c-text-italic': node.config && node.config.isItalic,
+                          'spr-multivalue-data-table-label-pinned': true,
+                          'c-text-gray-7': true,
+                          'spr-multivalue-data-table-right-fade': this.addColFade,
+                          'headerRow': node.values === undefined
+                    }">
+              {{node.label}}</td>  
+                          
+            <td 
+            [ngStyle]="{'padding-left.px': (node.level * 10), 'width.em': '15'}"
+            [attr.colspan]="node.values === undefined ? columnCount + 2 : 1" 
+            [ngClass]="getValueClasses(node.config, false)">{{node.label}}</td>              
+                                    
+
+            <ng-container *ngIf="node.values">
+              <td #valueCell [ngClass]="getValueClasses(node.config, idx === 0)" *ngFor="let value of node.values; let idx = index;">{{value}}</td>
+            </ng-container>
+        </tr>
+
+        <ng-container *ngIf="node.children">
+          <ng-container *ngFor="let child of node.children; let i = index">
+            <ng-container *ngTemplateOutlet="nodeTemplateRef; context: { node: child, isRoot: false }"></ng-container>
+          </ng-container>
+        </ng-container>
+        
+    </ng-template>
+
+    <!-- Initiate the recursive template rendering. -->
+    <ng-container *ngTemplateOutlet="nodeTemplateRef; context: { node: root, isRoot: true }"></ng-container>
+
+</tbody> 
+</table>
+ </div>
+ </div>
+</ng-container>
+
+
+<ng-container *ngIf="!pinFirstColumn">
+<table class="c-table"
+  [ngClass]="{'c-bd': addBorder,
+              'c-table-transparent': !addZebraStriping}">
+  <thead *ngIf="headerText">
+    <th [ngClass]="getHeaderClasses()" [attr.colspan]="columnCount+1">{{headerText}}</th>
+  </thead>
+
+  <tbody>
+
+    <ng-template #nodeTemplateRef let-node="node" let-isRoot="isRoot">
+        <tr *ngIf="isRoot !== true">
+            <td class="c-bd c-text-gray-7"
+              [attr.colspan]="node.values === undefined ? columnCount + 1 : 1" 
+              [ngStyle]="{'padding-left.px': (node.level * 10)}"
+              [ngClass]="{'c-bd': addBorder,
+                          'c-text-bold': node.config && node.config.isBold,
+                          'c-text-italic': node.config && node.config.isItalic,
+                          'spr-multivalue-data-table-label': true}">{{node.label}}</td>              
+            <ng-container *ngIf="node.values">
+              <td [ngClass]="getValueClasses(node.config, false)" *ngFor="let value of node.values">{{value}}</td>
+            </ng-container>
+        </tr>
+
+        <ng-container *ngIf="node.children">
+          <ng-container *ngFor="let child of node.children; let i = index">
+            <ng-container *ngTemplateOutlet="nodeTemplateRef; context: { node: child, isRoot: false }"></ng-container>
+          </ng-container>
+        </ng-container>
+        
+    </ng-template>
+
+    <!-- Initiate the recursive template rendering. -->
+    <ng-container *ngTemplateOutlet="nodeTemplateRef; context: { node: root, isRoot: true }"></ng-container>
+
+</tbody> 
+</table>
+</ng-container>

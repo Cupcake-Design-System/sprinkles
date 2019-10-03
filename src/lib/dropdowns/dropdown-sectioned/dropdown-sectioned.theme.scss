@@ -1,0 +1,28 @@
+spr-dropdown-sectioned {
+  .c-dropdown-item:hover {
+    color: $color-primary-9;
+    background: $color-gray-0;
+  }
+  
+  .c-btn-dropdown {
+    &:active {
+      background: $color-gray-1; 
+    }
+    &:focus {
+      background: $color-gray-1; 
+    }
+    &:hover {
+      background: $color-gray-0;
+    }
+  }
+  
+  
+  .spr-focused {
+    background: $color-gray-0;
+  }
+  
+  .spr-selected {
+    background: $color-gray-2;
+    color: $color-primary-9;
+  }
+}

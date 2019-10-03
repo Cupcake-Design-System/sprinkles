@@ -1,0 +1,45 @@
+{
+  "defaultSeverity": "error",
+  "rulesDirectory": ["node_modules/codelyzer", "node_modules/rxjs-tslint", "node_modules/tslint-jasmine-rules/dist"],
+  "rules": {
+    "trailing-comma": [
+      false,
+      {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    ],
+    "curly": false,
+    "interface-name": [true, "always-prefix"],
+    "no-focused-tests": true,
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "directive-selector": [true, "attribute", ["app", "spr"], "camelCase"],
+    "component-selector": [true, "element", ["app", "spr"], "kebab-case"],
+    "import-destructuring-spacing": true,
+    "no-attribute-parameter-decorator": true,
+    "no-forward-ref": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "only-arrow-functions": false,
+    "arrow-parens": false,
+    "pipe-naming": [true, "camelCase", "bb"],
+    "use-host-property-decorator": true,
+    "use-input-property-decorator": true,
+    "use-life-cycle-interface": true,
+    "use-output-property-decorator": true,
+    "use-pipe-transform-interface": true,
+    "no-console": [true, "time", "timeEnd", "trace"],
+    "max-line-length": false,
+    "no-string-literal": false,
+    "no-use-before-declare": true,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "quotemark": [true, "single", "avoid-escape"],
+    "variable-name": [true, "allow-leading-underscore", "allow-pascal-case", "ban-keywords", "check-format"],
+    "rxjs-collapse-imports": true,
+    "rxjs-pipeable-operators-only": true,
+    "rxjs-no-static-observable-methods": true,
+    "rxjs-proper-imports": true
+  }
+}

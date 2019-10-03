@@ -1,0 +1,43 @@
+@import '../../../style/webkit-scrollbar.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  @include webkit-scrollbar-persistent;
+  margin: .25rem .2rem .25rem 0;
+
+  flex: 1 1 auto;
+  flex-direction: column;
+  position: relative; // required for scrollToCurrentItem
+
+  list-style-type: none;
+  font-size: 12px;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  > li {
+    padding: .4rem;
+
+    .item-content {
+      display: block;
+      width: 100%;
+      padding-left: .2rem;
+    }
+  }
+}
+
+.spr-info-container {
+
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .no-results-message, .too-many-results-message {
+    flex: 0 0 auto;
+  }
+}

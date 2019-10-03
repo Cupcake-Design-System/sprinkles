@@ -1,0 +1,13 @@
+<ng-template #defaultTemplate>
+  <ng-content></ng-content>
+</ng-template>
+
+<ng-template #imageTemplate>
+  <img #image [src]="src">
+</ng-template>
+
+<ng-template #iconTemplate>
+   <i [class]="icon"></i>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="template"></ng-container>

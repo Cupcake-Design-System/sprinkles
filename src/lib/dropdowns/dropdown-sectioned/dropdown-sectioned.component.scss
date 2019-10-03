@@ -1,0 +1,37 @@
+@import '../../style/webkit-scrollbar.scss';
+
+.spr-show {
+  display: block;
+  position: absolute;
+}
+
+.c-dropdown-item:hover {
+  text-decoration: none;
+}
+
+.c-btn-dropdown {
+  background: white;
+}
+
+.c-card {
+  border: 0;
+}
+
+.scroll {
+  @include webkit-scrollbar-persistent;
+  overflow-y: auto;
+}
+
+.spr-ellipsis {
+  text-align: left;
+  max-width: 8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spr-caret {
+  margin-left: -20px;
+  position: absolute;
+  margin-top: 6px;
+}

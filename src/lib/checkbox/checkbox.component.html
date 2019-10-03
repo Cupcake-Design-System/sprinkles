@@ -1,0 +1,7 @@
+<label #mixinRef class="c-checkbox">
+  <input type="checkbox" [checked]="checked" [disabled]="disabled" (click)="toggle()">
+  <i></i>
+  <span class="checkbox-content">
+    <ng-content></ng-content>
+  </span>
+</label>

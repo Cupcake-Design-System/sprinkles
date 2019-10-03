@@ -1,0 +1,40 @@
+<span class="c-dropdown" (clickOutside)="togglePanel()" [clickOutsideEnabled]="isPanelVisible">
+  <button   
+    spr-button
+    class="c-btn"
+    [disabled]="disabled"
+    [color]="color"
+    [size]="size"
+    [outline]="outline"    
+    (click)="togglePanel()">
+    <div class="c-d-inline-flex">
+    <div class="spr-ellipsis">{{selectedText}}</div>
+    <div class="c-p-left-sm"><i class="fa fa-angle-down" aria-hidden="true"></i></div>
+    </div>    
+ </button>
+  
+  <ul class="c-dropdown-list scroll" 
+    [ngStyle]="{'max-height.px': config.maxScrollHeightPx}"
+    [ngClass]="{'spr-show': isPanelVisible,
+                'c-dropdown-list-below': panelDirection === 'below' || panelDirection === 'right',
+                'c-dropdown-list-above': panelDirection === 'above',
+                'c-dropdown-list-right': panelDirection === 'right'}"> 
+    <li *ngIf="!items || items.length === 0">No Options Provided.</li>
+    <li *ngFor="let group of items" class="c-p-bottom-xs">
+        <spr-dropdown-section [headerText]="group.groupName">
+            <spr-dropdown-section-option  
+              *ngFor="let option of group.options; index as idx" 
+              class="c-dropdown-item"
+              [id]="option.id"
+              [ngClass]="{'spr-focused': this.keyPressed && optionComponents && option.id === optionComponents[keyboardOptionIndex].id,
+                          'spr-selected primary': selectedOptionId === option.id }"
+              [index]="idx"
+              [text]="option.text" 
+              [showIcon]="selectedOptionId === option.id" 
+              [showIdOnHover]="showIdOnHover"
+              (click)="onOptionClick($event, option)"
+              ></spr-dropdown-section-option>
+        </spr-dropdown-section>
+    </li>
+  </ul>
+ </span>

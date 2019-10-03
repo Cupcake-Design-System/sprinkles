@@ -1,0 +1,57 @@
+@import '../../style/webkit-scrollbar.scss';
+
+.c-bd {
+  border-right: 1px solid rgb(206, 212, 218);
+}
+
+.spr-multivalue-data-table-right-fade {
+  box-shadow: 3em 0 3em -0.3em rgba(0, 0, 0, .05);
+}
+
+.spr-multivalue-data-table-header {
+  background-color: white;
+  border-bottom: 0px;
+  left: 0px;
+}
+
+.spr-multivalue-data-table-label {
+  min-width: 11.5rem; 
+  max-width: 11.5rem; 
+  vertical-align: top; 
+}
+
+.spr-multivalue-data-table-label-pinned {
+  @extend .spr-multivalue-data-table-label;
+  position: absolute; 
+  background-color:white; 
+  z-index:1;
+  left: 0px;
+}
+
+.spr-multivalue-data-table-pinned tr:first-child td:first-child {
+  border-top: 0px;
+}
+
+.spr-multivalue-data-table-label-pinned-bd {
+  border: 1px solid #ced4da;
+  border-bottom: 0px;
+  border-spacing: 0px;
+}
+
+.spr-multivalue-data-table-value {
+  position: relative; 
+  min-width: 15em; 
+  max-width: 5em; 
+  z-index:unset; 
+  vertical-align: top; 
+}
+
+.headerRow {
+  border-right: 0px;
+  box-shadow: none;
+}
+
+.scroll {
+  @include webkit-scrollbar-persistent;
+  overflow-x: auto;
+}

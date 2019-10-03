@@ -1,0 +1,11 @@
+spr-loader-basic {
+  height: auto;
+  width: auto;
+  background: none;
+}
+.spr-loader-overlay {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

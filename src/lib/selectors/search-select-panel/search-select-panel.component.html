@@ -1,0 +1,33 @@
+<div *ngIf="showSearch" class="c-input-container c-bd-bottom c-p-xs">
+  <div class="c-input-icon">
+    <i class="fas fa-sm fa-search"></i>
+  </div>
+  <input
+    #searchInput
+    type="search"
+    class="c-input c-input-xs"
+    [ngClass]="{'ignore-focus': !highlightSearchFocus}"
+    [placeholder]="searchPlaceholder"
+    [ngModel]="innerSearch$ | async"
+    (ngModelChange)="onSearchChange($event)"
+    aria-label="search" />
+</div>
+<spr-select-panel-items
+  [ngClass]="{ 'spr-focused': isFocused }"
+  [selectedItems$]="displayedSelectedItems$"
+  [searchResult$]="filteredSearchResult$"
+  [itemTemplate]="itemTemplate || defaultItemTemplate"
+  [toggleCurrent$]="toggleCurrent$"
+  [moveUp$]="moveUp$"
+  [moveDown$]="moveDown$"
+  [moveTop$]="moveTop$"
+  [moveBottom$]="moveBottom$"
+  [size]="size"
+  [noResultsMessage]="noResultsMessage"
+  [tooManyResultsMessage]="tooManyResultsMessage"
+  (selectionChanged)="onSelectionChange($event)"
+  (moveFocus)="moveFocus.emit($event)">
+</spr-select-panel-items>
+<ng-template #defaultItemTemplate let-item="item">
+  <div class="c-text-ellipsis">{{ item.text }}</div>
+</ng-template>

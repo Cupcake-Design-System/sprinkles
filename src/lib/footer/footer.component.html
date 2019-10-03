@@ -1,0 +1,21 @@
+<div class="c-footer-left">
+  © {{ copyrightYear }} {{ companyName }}. All Rights Reserved.
+</div>
+<div class="c-footer-right">
+  <div *ngIf="footerLinks.length > 0">
+    <div *ngFor="let footerLink of footerLinks" class="c-footer-link">
+      <a
+        *ngIf="footerLink.type === 'event'"
+        (click)="onFooterLinkClick(footerLink.event)"
+        class="c-a"
+        >{{ footerLink.name }}</a
+      >
+      <a
+        *ngIf="footerLink.type === 'link'"
+        [href]="footerLink.path"
+        class="c-a"
+        >{{ footerLink.name }}</a
+      >
+    </div>
+  </div>
+</div>

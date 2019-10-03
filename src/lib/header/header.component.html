@@ -1,0 +1,44 @@
+<header
+  [ngClass]="['c-header', headerAttachment, headerTheme, headerBackground]"
+>
+  <div class="c-header-left">
+    <ng-container *ngFor="let item of headerLeft">
+      <spr-header-link
+        *ngIf="item.type === 'link'"
+        [params]="item.params"
+      ></spr-header-link>
+      <!--<polaris-header-dropdown
+          *ngIf="item.type === 'dropdown'"
+          [params]="item.params"
+        ></polaris-header-dropdown> -->
+    </ng-container>
+  </div>
+  <div class="c-header-center">
+    <div class="header-nav">
+      <ng-container *ngFor="let item of headerCenter">
+        <spr-header-link
+          *ngIf="item.type === 'link'"
+          [params]="item.params"
+        ></spr-header-link>
+        <!-- <polaris-header-dropdown
+            *ngIf="item.type === 'dropdown'"
+            [params]="item.params"
+          ></polaris-header-dropdown> -->
+      </ng-container>
+    </div>
+  </div>
+  <div class="c-header-right">
+    <ng-content select="[header-right]"></ng-content>
+    <ng-container *ngFor="let item of headerRight">
+      <spr-header-link
+        *ngIf="item.type === 'link'"
+        [params]="item.params"
+      ></spr-header-link>
+      <!-- <polaris-header-dropdown
+          *ngIf="item.type === 'dropdown'"
+          [params]="item.params"
+          dropdownAlign="right"
+        ></polaris-header-dropdown> -->
+    </ng-container>
+  </div>
+</header>

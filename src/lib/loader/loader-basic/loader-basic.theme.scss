@@ -1,0 +1,27 @@
+spr-loader-basic {
+  
+  .spr-loader-overlay {
+    .spr-loader {
+      -webkit-animation: spin .7s linear infinite;
+              animation: spin .7s linear infinite;
+      border-style: solid;
+      border-color: $color-gray-3;
+      border-top-color: $color-primary-7;
+      border-radius: 50%;
+    }
+  }
+  
+  @-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+}

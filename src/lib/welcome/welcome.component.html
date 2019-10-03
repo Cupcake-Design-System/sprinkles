@@ -1,0 +1,75 @@
+<main class="c-bg-white c-p-lg">
+  <div class="c-container">
+    <div class="c-row c-m-top-md c-m-horizontal-xl">
+      <div class="c-col c-text-md">
+        <div class="c-header-lg c-bd-bottom c-bd-gray-2">Welcome to Sprinkles</div>
+        <p class="c-text-md">Sprinkles!!! It's a collection of bite-sized, snackable, production-ready components for your Angular 2+ application, based on the
+          <a class="c-link" href="https://code.ipreo.com/ipreo/cupcake">Cupcake Design System</a> in use at Ipreo by IHS Markit. The idea is to have access to a variety of useful components in one repository, so that you can quickly set up the module import and populate your app.</p>
+        <p class="c-text-md">Use fewer external dependencies, spend less time on boilerplate, make your product owners happy, and spend more quality time with your family, friends, and/or video game console. What's not to like?</p>
+        <p class="c-text-md">Sprinkles uses Storybook, a fantastic live playground that allows you to view components, see and tweak the code that makes it work, and share with others.</p>
+
+
+        <div class="c-text-bold">Quick Links:</div>
+        <ul>
+          <li>
+            <a class="c-a" href="https://pages.code.ipreo.com/ipreo/sprinkles">Sprinkles Playground/Storybook Demo Site</a>
+          </li>
+          <li>
+            <a class="c-a" href="https://pages.code.ipreo.com/Ipreo/cupcake-docs/">Cupcake Documentation</a>
+          </li>
+          <li>
+            <a class="c-a" href="https://storybook.js.org/">What is Storybook?</a>
+          </li>
+          <li>
+            <a class="c-a" href="https://code.ipreo.com/Ipreo/sprinkles/blob/develop/CONTRIBUTING.md">Contribute Your Sprinkles</a>
+          </li>
+          <li>
+            <a class="c-a" href="https://teams.microsoft.com/l/channel/19%3a1d5da58b6e334223a83533274c568ae5%40thread.skype/Sprinkles%2520Angular%2520Components?groupId=5d20d953-9e8f-4c39-9a21-610f537ea457&tenantId=c1156c2f-a3bb-4fc4-ac07-3eab96da8d10">Sprinkles on Teams</a>
+          </li>
+        </ul>
+
+        <div class="c-header-md c-bd-bottom c-bd-gray-2 c-p-top-lg">Add Sprinkles to My App</div>
+        <p class="c-text-md">Just add the Sprinkles repository to your project: <code class="c-bg-gray-1">npm install --save @ipreo/ngx-sprinkles</code></p>
+        <p class="c-text-md">Then add the submodules you'd like to use to your project's app module: <code class="c-bg-gray-1">import {{'{'}} HeaderModule, CardModule {{'}'}} from '@ipreo/ngx-sprinkles';</code></p>
+        <p class="c-text-md">and:</p>
+        <div class="c-bg-gray-1">
+          <pre><code>
+@NgModule({{'{'}}
+  ...
+  imports: [
+      ...
+      HeaderModule,
+      CardModule,
+      PipesModule
+      ...
+  ],
+  ...
+        </code></pre>
+        </div>
+        <p class="c-text-md">(In these snippets, only three of the available modules are listed - you only need to import the modules you are using in your project.)</p>
+        <p class="c-text-md">You don't need any dependencies apart from<code class="c-bg-gray-1">@ipreo/cupcake</code>.</p>
+        <p class="c-text-md">Once that is complete, you should be ready to utilize the Sprinkle in your individual display components with <code class="c-bg-gray-1">spr</code> as a prefix, like this:
+          <code class="c-bg-gray-1">&lt;spr-header [headerDataModel]="headerDataModel">&lt;/spr-header&gt;</code></p>
+        <p class="c-text-md">You can find more details about using each individual Sprinkle in the documentation.</p>
+
+        <div class="c-header-md c-bd-bottom c-bd-gray-2 c-p-top-lg">Themes</div>
+        <p class="c-text-md">If you would like the ability to define a theme or pick from an existing cupcake theme you must add the following to your <code class="c-bg-gray-1">vendor.scss</code> or
+          <code class="c-bg-gray-1">styles.scss</code> imports:</p>
+        <p><code class="c-bg-gray-1">@import "~@ipreo/cupcake/src/flavors/ihs/ihs.scss";</code> and <code class="c-bg-gray-1">@import "~@ipreo/ngx-sprinkles/lib/scss/sprinkles.scss";</code> </p>
+        <p class="c-text-md">The first file can either be a theme from cupcake or can be an override file defined within your app.</p>
+
+
+        <div class="c-header-md c-bd-bottom c-bd-gray-2 c-p-top-lg">Run Sprinkles Locally</div>
+        <p class="c-text-md">This repository comprises two parts. First, it compiles to an importable repository hosted in artifactory with a public api. It also contains the
+          <a class="c-link" href="https://pages.code.ipreo.com/ipreo/sprinkles"> Storybook demo site</a> If you would like to run the documentation locally, you can do so by cloning the repository, running <code class="c-bg-gray-1">npm install</code>, and then <code class="c-bg-gray-1">npm run storybook</code>.
+        </p>
+        <p class="c-text-md">You may also want to check out the official <a class="c-link" href="https://code.ipreo.com/ipreo/sprinkles-demo-app">Sprinkles Demo</a> for a live example of an app that uses Sprinkles in the markup.</p>
+
+        <div class="c-header-md c-bd-bottom c-bd-gray-2 c-p-top-lg">Contribute to Sprinkles</div>
+        <p class="c-text-md">We'd love for Sprinkles to grow and incorporate a variety of use cases within Ipreo. If you have an exportable, Cupcake-friendly Angular Component, Directive, or Pipe you'd like to add, that's awesome! Check the
+          <a class="c-link" href="https://code.ipreo.com/ipreo/sprinkles/CONTRIBUTING.md">Contributing</a> document for more details.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
