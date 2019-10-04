@@ -4,7 +4,7 @@
     "ng": "ng",
     "start": "npm run storybook",
     "build": "ng build",
-    "snapshot": "build-storybook && percy-storybook --widths=320,1280",
+    "snapshot": "build-storybook && percy-storybook",
     "test": "jest",
     "test:o": "jest --json --outputFile=.jest-test-results.json",
     "test:ow": "jest --json --outputFile=.jest-test-results.json --watch",
