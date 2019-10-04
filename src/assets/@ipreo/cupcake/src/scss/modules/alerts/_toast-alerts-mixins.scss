@@ -1,0 +1,216 @@
+////
+/// @group toast-alerts
+////
+
+/// $toast-alert-fs 
+$toast-alert-fs: $global-font-size !default;
+
+/// $toast-alert-font-weight 
+$toast-alert-font-weight: bold !default;
+
+/// $toast-alert-color 
+$toast-alert-color: $color-gray-9 !default;
+
+/// $toast-alert-color-variant 
+$toast-alert-color-variant: true !default;
+
+/// $toast-alert-border 
+$toast-alert-border: $color-gray-3 !default;
+
+/// $toast-alert-radius 
+$toast-alert-radius: $global-radius !default;
+
+/// $toast-alert-margin 
+$toast-alert-margin: 0 0 1rem 0 !default;
+
+/// $toast-alert-padding 
+$toast-alert-padding: 19px 27px 19px 40px !default;
+
+/// $toast-alert-shadow 
+$toast-alert-shadow: 0 8px 12px 0 rgba(33, 37, 41, 0.15) !default;
+
+
+/// $toast-alert-bar-bg 
+$toast-alert-bar-bg: $color-gray-8 !default;
+
+/// $toast-alert-bar-bd 
+$toast-alert-bar-bd: 1px solid $color-gray-9 !default;
+
+/// $toast-alert-bar-position 
+$toast-alert-bar-position: bottom !default;
+
+/// $toast-alert-bar-size 
+$toast-alert-bar-size: 3px !default;
+
+
+/// $toast-alert-danger-color 
+$toast-alert-danger-color: $alert-danger-icon-color !default;
+
+/// $toast-alert-warning-color 
+$toast-alert-warning-color: $alert-warning-icon-color !default;
+
+/// $toast-alert-success-color 
+$toast-alert-success-color: $alert-success-icon-color !default;
+
+/// $toast-alert-info-color 
+$toast-alert-info-color: $alert-primary-icon-color !default;
+
+/// $toast-alert-danger-bar-bg 
+$toast-alert-danger-bar-bg: $danger !default;
+
+/// $toast-alert-warning-bar-bg 
+$toast-alert-warning-bar-bg: $warning !default;
+
+/// $toast-alert-success-bar-bg 
+$toast-alert-success-bar-bg: $success !default;
+
+/// $toast-alert-info-bar-bg 
+$toast-alert-info-bar-bg: $primary !default;
+
+
+/// $toast-alert-danger-bar-bd 
+$toast-alert-danger-bar-bd: darken($danger, 5) !default;
+
+/// $toast-alert-warning-bar-bd 
+$toast-alert-warning-bar-bd: darken($warning, 5) !default;
+
+/// $toast-alert-success-bar-bd 
+$toast-alert-success-bar-bd: darken($success, 5) !default;
+
+/// $toast-alert-info-bar-bd 
+$toast-alert-info-bar-bd: darken($primary, 5) !default;
+
+
+/// $toast-alert-close-size 
+$toast-alert-close-size: 30px !default;
+
+/// $toast-alert-close-size 
+$toast-alert-close-fs: 17px !default;
+
+/// $toast-alert-close-c 
+$toast-alert-close-c: $color-gray-4 !default;
+
+/// $toast-alert-close-hover-c 
+$toast-alert-close-hover-c: $color-gray-9 !default;
+
+/// $toast-alert-close-transition 
+$toast-alert-close-transition: color .15s linear !default;
+
+/// $toast-alert-icon-top 
+$toast-alert-icon-top: 19px !default;
+
+/// $toast-alert-icon-left 
+$toast-alert-icon-left: 20px !default;
+
+/// $toast-alert-icon-left 
+$toast-alert-icon-size: 12px !default;
+
+@mixin toast-alert {
+  position: relative;
+  margin: $toast-alert-margin;
+  padding: $toast-alert-padding;
+  background: white;
+  color: $toast-alert-color;
+  font-size: $toast-alert-fs;
+  font-weight: $toast-alert-font-weight;
+  border-radius: $toast-alert-radius;
+  box-shadow: $toast-alert-shadow, 0 0 0 1px $toast-alert-border;
+  word-wrap: break-word;
+
+  // Alert Bar
+  &::before {
+    content: '';
+    position: absolute;
+    background: $toast-alert-bar-bg;
+
+    @if $toast-alert-bar-position == bottom {
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      height: $toast-alert-bar-size;
+      border: $toast-alert-bar-bd;
+      border-radius: 0 0 $toast-alert-radius $toast-alert-radius;
+    } @else {
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: $toast-alert-bar-size;
+      border-radius: $toast-alert-radius 0 0 $toast-alert-radius;
+    }
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $toast-alert-close-size;
+    height: $toast-alert-close-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $toast-alert-close-fs;
+    font-weight: 900;
+    color: $toast-alert-close-c;
+    transition: $toast-alert-close-transition;
+    cursor: pointer;
+
+    &:hover {
+      color: $toast-alert-close-hover-c;
+    }
+  }
+
+  // Alert Icon
+  &::after {
+    content: '!';
+    font-family: Arial, Helvetica, sans-serif; // alert icon using regular symbols so we setting font for them.
+    position: absolute;
+    top: $toast-alert-icon-top;
+    left: $toast-alert-icon-left;
+    width: $toast-alert-icon-size;
+    height: $toast-alert-icon-size;
+    line-height: $toast-alert-icon-size;
+    color: white;
+    background: $toast-alert-color;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 900;
+    font-size: $toast-alert-icon-size / 1.25;
+    text-indent: -0.5px;
+  }
+}
+
+@mixin toast-alert-info-icon() {
+  &::after {
+    content: 'i';
+  }
+}
+
+@mixin taost-alert-success-icon() {
+  &::after {
+    content: 'L';
+    transform: scaleX(-1) rotate(-45deg);
+    font-size: $toast-alert-icon-size / 1.333;
+  }
+}
+
+@mixin toast-alert-style($color, $bd, $bg) {
+  @if $toast-alert-color-variant {
+    color: $color;
+  }
+
+  // bar color
+  &::before {
+    @if $white-label == true {
+      background: $bg;
+      border-color: $bg;
+    } @else {
+      background: $bg;
+      border-color: $bd;
+    }
+  }
+
+  // icon color
+  &::after {
+    background: $color;
+  }
+}

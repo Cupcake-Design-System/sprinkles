@@ -1,0 +1,66 @@
+// BUTTON SHAPES
+// This map is used to generate the different button shapes.
+// Edit or add shapes to the list below and recompile.
+// Each block contains the (name, border-radius).
+// The class is generated using the name: (ex .c-btn-square).
+//
+$btn-shapes: (
+  square: $radius-square,
+  box: $global-radius,
+  rounded: $global-radius,
+  pill: $radius-pill,
+  circle: $radius-round
+) !default;
+
+
+// Button Shapes
+
+@each $btn-shape in $btn-shapes {
+  $btn-shape-name: nth($btn-shape, 1);
+  $btn-shape-radius: nth($btn-shape, 2);
+
+  .c-btn-#{$btn-shape-name} {
+    border-radius: $btn-shape-radius;
+  }
+}
+
+@mixin btn-box($width: $btn-box-width) {
+  width: $width;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.c-btn-box {
+  @include btn-box;
+
+  &.c-btn-xs {
+    width: $btn-box-width-xs;
+  }
+
+  &.c-btn-sm {
+    width: $btn-box-width-sm;
+  }
+
+  &.c-btn-lg {
+    width: $btn-box-width-lg;
+  }
+
+  &.c-btn-xl {
+    width: $btn-box-width-xl;
+  }
+}
+
+.c-btn-caret {
+  @include btn-box($btn-caret-width);
+}
+
+.c-btn-icon-dropdown {
+  @include btn-box($btn-icon-dropdown-width);
+}
+
+.c-btn-circle {
+  overflow: hidden;
+
+  @extend .c-btn-box;
+}

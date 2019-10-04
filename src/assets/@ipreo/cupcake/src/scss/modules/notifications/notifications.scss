@@ -1,0 +1,86 @@
+////
+/// @group notifications
+////
+
+/// $notify-z-index       
+$notify-z-index       : 99999 !default;
+
+/// $notify-min-width     
+$notify-min-width     : 390px !default;
+
+/// $notify-width         
+$notify-width         : 25vw !default;
+
+/// $notify-screen-spacing
+$notify-screen-spacing: 16px !default;
+
+/// $notify-transition 
+$notify-transition    : all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !default;
+
+
+@mixin ipreo-notify-logs-slide($direction) {
+  $sign: '';
+
+  @if $direction == left {
+    $sign: '-';
+  }
+
+  .c-alert,
+  .c-toast-alert {
+    transform: translateX(calc(#{$sign}110% + #{$notify-screen-spacing}));
+
+    &.show {
+      transform: translateX(0);
+    }
+  }
+}
+
+@mixin ipreo-notify-logs-base {
+  position: fixed;
+  z-index: $notify-z-index;
+  width: $notify-width;
+  min-width: $notify-min-width;
+
+  &.top, {
+    top: $notify-screen-spacing;
+  }
+
+  &.bottom, {
+    bottom: $notify-screen-spacing;
+  }
+
+  &.left, {
+    left: $notify-screen-spacing;
+
+    @include ipreo-notify-logs-slide(left);
+  }
+
+  &.right, {
+    right: $notify-screen-spacing;
+
+    @include ipreo-notify-logs-slide(right);
+  }
+
+  .c-alert,
+  .c-toast-alert {
+    position: relative;
+    pointer-events: none;
+    opacity: 0;
+    transition: $notify-transition;
+
+    @include drop-shadow(md);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.show {
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+}
+
+.c-notify-logs {
+  @include ipreo-notify-logs-base;
+}

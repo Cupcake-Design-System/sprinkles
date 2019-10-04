@@ -1,0 +1,87 @@
+////
+/// @group pagination
+////
+
+/// $pagination-margin-bottom        
+$pagination-margin-bottom        : $spacing-global-margin !default;
+
+/// $pagination-gradients            
+$pagination-gradients            : false !default;
+
+/// $pagination-item-spacing        
+$pagination-item-spacing         : 4px !default;
+
+/// $pagination-font-size            
+$pagination-font-size            : 12px !default;
+
+/// $pagination-font-size-sm         
+$pagination-font-size-sm         : 12px !default;
+
+/// $pagination-font-size-lg         
+$pagination-font-size-lg         : 14px !default;
+
+/// $pagination-item-padding        
+$pagination-item-padding         : 3px !default;
+
+/// $pagination-item-padding-sm      
+$pagination-item-padding-sm      : 1px !default;
+
+/// $pagination-item-padding-lg  
+$pagination-item-padding-lg      : 5px !default;
+
+/// $pagination-item-current-padding 
+$pagination-item-current-padding : 3px !default;
+
+/// $pagination-item-border-radius   
+$pagination-item-border-radius   : $global-radius !default;
+
+/// $pagination-item-color         
+$pagination-item-color           : #0a0a0a !default;
+
+/// $pagination-item-bg           
+$pagination-item-bg              : $color-gray-1 !default;
+
+/// $pagination-item-current-bg     
+$pagination-item-current-bg      : $primary !default;
+
+/// $pagination-item-current-color
+$pagination-item-current-color   : $white !default;
+
+/// $pagination-item-color-disabled
+$pagination-item-color-disabled  : #d8d8d8 !default;
+
+/// $pagination-item-color-sm    
+$pagination-item-color-sm        : #0a0a0a !default;
+
+/// $pagination-item-color-hover-sm  
+$pagination-item-color-hover-sm  : $primary !default;
+
+/// $pagination-item-current-color-sm:
+$pagination-item-current-color-sm: $primary !default;
+
+
+@mixin pagination-container {
+  display: flex;
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+  margin-bottom: $pagination-margin-bottom;
+}
+
+@mixin pagination-item-disabled {
+  color: $pagination-item-color-disabled;
+  background: lighten($pagination-item-color-disabled, 5%);
+  cursor: not-allowed;
+
+  &:hover {
+    color: $pagination-item-color-disabled;
+    background: lighten($pagination-item-color-disabled, 5%);
+    cursor: not-allowed;
+  }
+}
+
+@mixin pagination-ellipsis {
+  content: '\2026';
+  padding: 0;
+  color: $pagination-item-color;
+}

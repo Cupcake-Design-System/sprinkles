@@ -1,0 +1,241 @@
+@mixin popover-base {
+  position: absolute;
+  text-align: left;
+  max-width: $popover-max-width;
+  padding: $popover-padding;
+  font-size: $popover-fs;
+  font-family: $popover-family;
+  line-height: $popover-line-height;
+  color: $popover-color;
+  background: $popover-bg;
+  border: $popover-bd-width solid $popover-bd-c;
+  border-radius: $popover-bd-radius;
+  box-shadow: $popover-shadow;
+  z-index: $popover-zindex;
+
+  // x-placement is for popper.js that is used in cupcake-components package
+
+  &-top,
+  &[x-placement^="top"] {
+    margin-bottom: $popover-arrow-width;
+  }
+
+  &-left,
+  &[x-placement^="left"] {
+    margin-right: $popover-arrow-width;
+  }
+
+  &-right,
+  &[x-placement^="right"] {
+    margin-left: $popover-arrow-width;
+  }
+
+  &-bottom,
+  &[x-placement^="bottom"] {
+    margin-top: $popover-arrow-width;
+  }
+
+  &-arrow {
+    position: absolute;
+  }
+
+  &[x-out-of-boundaries] {
+    display: none !important; // overriding inline styles, set by popper js
+  }
+
+  // align arrows relative to popover
+  &-top > &-arrow,
+  &-bottom > &-arrow {
+    &,
+    &::after {
+      @include horizontal-center;
+    }
+  }
+
+  &-left > &-arrow,
+  &-right > &-arrow {
+    &,
+    &::after {
+      @include vertical-center;
+    }
+  }
+
+  // for popper.js
+  &[x-placement^="top"] > &-arrow,
+  &[x-placement^="bottom"] > &-arrow {
+    margin: 0 $popover-bd-radius; // required by popper.js
+
+    &::after {
+      @include horizontal-center;
+    }
+  }
+
+  &[x-placement^="left"] > &-arrow,
+  &[x-placement^="right"] > &-arrow {
+    margin: $popover-bd-radius 0; // required by popper.js
+
+    &::after {
+      @include vertical-center;
+    }
+  }
+
+
+  // generate and align arrow triangles
+  &-top > &-arrow,
+  &[x-placement^="top"] > &-arrow {
+    bottom: -$popover-arrow-width;
+
+    @include css-triangle($popover-arrow-width, $popover-bd-c, down);
+
+    &::after {
+      bottom: $popover-arrow-width - $popover-arrow-inner-width;
+
+      @include css-triangle($popover-arrow-inner-width, $popover-bg, down);
+    }
+  }
+
+  &-right > &-arrow,
+  &[x-placement^="right"] > &-arrow {
+    left: -$popover-arrow-width;
+
+    @include css-triangle($popover-arrow-width, $popover-bd-c, left);
+
+    &::after {
+      left: $popover-arrow-width - $popover-arrow-inner-width;
+
+      @include css-triangle($popover-arrow-inner-width, $popover-bg, left);
+    }
+  }
+
+  &-bottom > &-arrow,
+  &[x-placement^="bottom"] > &-arrow {
+    top: -$popover-arrow-width;
+
+    @include css-triangle($popover-arrow-width, $popover-bd-c, up);
+
+    &::after {
+      top: $popover-arrow-width - $popover-arrow-inner-width;
+
+      @include css-triangle($popover-arrow-inner-width, $popover-bg, up);
+    }
+  }
+
+  &-left > &-arrow,
+  &[x-placement^="left"] > &-arrow {
+    right: -$popover-arrow-width;
+
+    @include css-triangle($popover-arrow-width, $popover-bd-c, right);
+
+    &::after {
+      right: $popover-arrow-width - $popover-arrow-inner-width;
+
+      @include css-triangle($popover-arrow-inner-width, $popover-bg, right);
+    }
+  }
+}
+
+@mixin popover-color($bg: $color-primary-7, $color: $color-gray-0, $bd: $popover-bd-c) {
+  color: $color;
+  font-weight: $popover-contextual-fw;
+  background: $bg;
+  border: 1px solid $bd;
+
+  &[x-placement^="top"] > .c-popover-arrow,
+  &.c-popover-top > .c-popover-arrow {
+    border-color: $bd transparent transparent;
+
+    &::after {
+      border-color: $bg transparent transparent;
+    }
+  }
+
+  &[x-placement^="bottom"] > .c-popover-arrow,
+  &.c-popover-bottom > .c-popover-arrow {
+    border-color: transparent transparent $bd;
+
+    &::after {
+      border-color: transparent transparent $bg;
+    }
+  }
+
+  &[x-placement^="left"] > .c-popover-arrow,
+  &[x-placement^="right"] > .c-popover-arrow,
+  &.c-popover-left > .c-popover-arrow,
+  &.c-popover-right > .c-popover-arrow {
+    border-color: transparent $bd transparent;
+
+    &::after {
+      border-color: transparent $bg transparent;
+    }
+  }
+}
+
+
+/* stylelint-disable */
+@mixin tooltip-color($bg: $popover-default-bg, $color: $popover-default-color) {
+  
+  &::after {
+    color: $color;
+    background: $bg;
+  }
+
+  &::before {
+    border-top-color: $bg;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &[data-tooltip-conf*='right'] {
+    &::before {
+      border-top-color: transparent;
+      border-right-color: $bg;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  &[data-tooltip-conf*='bottom'] {
+    &::before {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: $bg;
+      border-left-color: transparent;
+    }
+  }
+
+  &[data-tooltip-conf*='left'] {
+    &::before {
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: $bg;
+    }
+  }
+}
+
+// Set Arrow Side
+@mixin arrowPosition($side) {
+  border-style: solid;
+  border-top-width: $popover-css-border-width;
+  border-right-width: $popover-css-border-width;
+  border-bottom-width: $popover-css-border-width;
+  border-left-width: $popover-css-border-width;
+
+  @if $side == top {
+    border-bottom-width: 0;
+  }
+
+  @else if $side == right {
+    border-left-width: 0;
+  }
+
+  @else if $side == bottom {
+    border-top-width: 0;
+  }
+
+  @else if $side == left {
+    border-right-width: 0;
+  }
+}
+/* stylelint-enable */

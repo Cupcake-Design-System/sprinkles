@@ -1,0 +1,126 @@
+////
+/// @group avatars
+////
+
+/// $avatar-size
+$avatar-size: 2.5rem !default;
+
+/// $avatar-fs 
+$avatar-fs: 12px !default;
+
+/// $avatar-status-margin 
+$avatar-status-margin: 1px !default;
+
+/// $avatar-status-size 
+$avatar-status-size: 8px !default;
+
+/// $avatar-primary
+$avatar-primary: $primary;
+
+/// $avatar-success
+$avatar-secondary: $secondary;
+
+/// $avatar-success
+$avatar-success: $success;
+
+/// $avatar-danger
+$avatar-danger: $danger;
+
+/// $avatar-warning
+$avatar-warning: $warning;
+
+
+// $avatar-colors
+$avatar-colors: ("primary", $avatar-primary)
+  ("secondary", $avatar-secondary)
+  ("success", $avatar-success)
+  ("danger", $avatar-danger)
+  ("warning", $avatar-warning) !default;
+
+// $avatar-sizes
+$avatar-sizes:
+  ("sm", 32px, .8rem, 1rem, 6px)
+  ("lg", 48px, 1rem, 1.25rem, 10px)
+  ("xl", 80px, 1.4rem, 1.8rem, 18px) !default;
+
+@mixin avatar {
+  position: relative;
+  display: inline-block;
+  width: $avatar-size;
+  height: $avatar-size;
+  line-height: $avatar-size;
+  color: $white;
+  background: $avatar-secondary;
+  border-radius: 50%;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: $avatar-fs;
+  vertical-align: middle;
+  margin: 0;
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.06);
+
+  &[data-text]::after {
+    content: attr(data-text);
+
+    @include absolute-center();
+  }
+
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  .fa {
+    font-size: $avatar-fs + 4;
+    line-height: $avatar-size;
+  }
+
+  &[data-status]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: $avatar-status-margin;
+    width: $avatar-status-size;
+    height: $avatar-status-size;
+    background-clip: padding-box;
+    border-radius: 50px;
+    box-shadow: 0 0 0 0.1rem $white;
+    color: $white;
+  }
+
+  &[data-status='primary']::before {
+    background-color: $primary;
+  }
+
+  &[data-status='success']::before {
+    background-color: $success;
+  }
+
+  &[data-status='warning']::before {
+    background-color: $warning;
+  }
+
+  &[data-status='danger']::before {
+    background-color: $danger;
+  }
+}
+
+
+@mixin avatar-size($size, $font-size, $icon-size, $status-size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  font-size: $font-size;
+
+  &[data-status]::before {
+    width: $status-size;
+    height: $status-size;
+  }
+
+  .fa {
+    font-size: $icon-size;
+    line-height: $size;
+  }
+}

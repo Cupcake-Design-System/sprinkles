@@ -1,0 +1,165 @@
+
+@mixin select {
+  $_dropdown-arrow: $select-background-img $select-background-pos no-repeat;
+
+  display: block;
+  width: 100%;
+  height: $control-height;
+  outline: 0;
+  appearance: none;
+  cursor: pointer;
+  padding: $select-padding;
+  padding-right: $select-padding-r;
+  font-size: $select-font-size;
+  font-weight: $control-font-weight;
+  line-height: $control-line-height;
+  text-align: left;
+  border: 1px solid $select-border-color;
+  box-shadow: $select-box-shadow;
+  border-radius: $select-border-radius;
+  background: $_dropdown-arrow, $select-background;
+  color: $select-color;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  &:focus::-ms-value {
+    color: $control-color;
+    background-color: transparent;
+  }
+
+  &-inline {
+    display: inline;
+    width: auto;
+  }
+
+  .c-input-icon + & {
+    padding-left: $control-icon-padding;
+  }
+
+  &:focus {
+    box-shadow: $select-box-shadow, $select-box-shadow-focus;
+  }
+
+  &:hover {
+    background: $_dropdown-arrow, $select-background-hover;
+  }
+
+  &:active,
+  &.c-input-active,
+  &.c-select-active {
+    background: $_dropdown-arrow, $select-background-active;
+    box-shadow: $select-box-shadow-active;
+
+    &:focus {
+      box-shadow: $select-box-shadow-active, $select-box-shadow-focus;
+    }
+  }
+
+  &:disabled,
+  &[disabled],
+  &.c-input-disabled {
+    &,
+    &:hover,
+    &:active {
+      @include input-disabled;
+
+      background: $select-background-img-disabled $select-background-pos no-repeat, $control-disabled-background;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.c-select,
+select.c-input:not([multiple]) {
+  @include select;
+}
+
+// for backwards compatibility. Remove in future.
+.c-select-xs,
+.c-select-sm,
+.c-select-lg,
+.c-select-xl {
+  @include select;
+}
+
+// for backwards compatibility. Remove in future.
+.c-select,
+.c-select-xs,
+.c-select-sm,
+.c-select-lg,
+.c-select-xl {
+  select {
+    appearance: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-left: 7px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:focus::-ms-value {
+      color: $control-color;
+      background-color: transparent;
+    }
+  }
+
+  &-arrow {
+    display: none;
+  }
+}
+
+
+// select sizes
+.c-select-xs,
+select.c-input:not([multiple]).c-input-xs {
+  height: $control-xs-height;
+  padding: $select-padding-xs;
+  padding-right: $select-padding-r;
+  font-size: $select-font-size-xs;
+}
+
+.c-select-sm,
+select.c-input:not([multiple]).c-input-sm {
+  height: $control-sm-height;
+  padding: $select-padding-sm;
+  padding-right: $select-padding-r;
+  font-size: $select-font-size-sm;
+}
+
+.c-select-lg,
+select.c-input:not([multiple]).c-input-lg {
+  height: $control-lg-height;
+  padding: $select-padding-lg;
+  padding-right: $select-padding-r;
+  font-size: $select-font-size-lg;
+}
+
+.c-select-xl,
+select.c-input:not([multiple]).c-input-xl {
+  height: $control-xl-height;
+  padding: $select-padding-xl;
+  padding-right: $select-padding-r;
+  font-size: $select-font-size-xl;
+}
+
+
+.c-select-error,
+select.c-input-error:not([multiple]) {
+  color: $select-error-c;
+  font-weight: $select-error-fw;
+  border-color: $select-error-bd;
+
+  option {
+    color: $select-color;
+  }
+}

@@ -1,0 +1,101 @@
+////
+/// @group badges
+////
+
+/// $badge-padding:
+$badge-padding: .25em .4em !default;
+
+/// $badge-border-width:
+$badge-border-width: 1px !default;
+
+/// $badge-border-style: 
+$badge-border-style: solid !default;
+
+/// $badge-border-radius:
+$badge-border-radius: $global-radius !default;
+
+/// $badge-border-radius-rounded:
+$badge-border-radius-rounded: 30em !default;
+
+/// $badge-font-size:
+$badge-font-size: 11px !default;
+
+/// $badge-font-weight: 
+$badge-font-weight: normal !default;
+
+/// $badge-line-height: 
+$badge-line-height: 1 !default;
+
+/// $badge-xs 
+$badge-xs: 8px !default;
+
+/// $badge-sm 
+$badge-sm: 9px !default;
+
+/// $badge-lg:  
+$badge-lg: 18px !default;
+
+/// $badge-xl: 
+$badge-xl: 20px !default;
+
+/// $badge-color
+$badge-color: $white;
+
+/// $badge-primary
+$badge-primary: $primary;
+
+/// $badge-secondary
+$badge-secondary: $color-gray-1;
+
+/// $badge-success
+$badge-success: $success;
+
+/// $badge-danger
+$badge-danger: $danger;
+
+/// $badge-warning
+$badge-warning: $warning;
+
+
+// $badge-sizes
+$badge-sizes:
+  ("sm", $badge-sm)
+  ("lg", $badge-lg)
+  ("xl", $badge-xl) !default;
+
+
+@mixin badge {
+  display: inline-block;
+  text-align: center;
+  padding: $badge-padding;
+  border-radius: $badge-border-radius;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  line-height: $badge-line-height;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &-link {
+    color: $color-gray-1;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &:empty {
+    padding: $badge-font-size - 4;
+    border-radius: 100%;
+  }
+}
+
+@mixin badge-style($background-color, $color: $badge-color) {
+  background-color: $background-color;
+  color: $color;
+}
+
+@mixin badge-outline($color: $badge-color) {
+  background-color: transparent;
+  color: $color;
+  border: 1px solid $color;
+}

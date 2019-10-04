@@ -1,0 +1,211 @@
+////
+/// @group alerts
+////
+
+/// $alert-border:   
+$alert-border           : 1px solid !default;
+
+/// $alert-margin
+$alert-margin           : 0 0 1rem 0 !default;
+
+/// $alert-padding
+$alert-padding          : 9px !default;
+
+/// $alert-top-padding
+$alert-top-padding      : 18px !default;
+
+/// $alert-font-size
+$alert-font-size        : 12px !default;
+
+/// $alert-line-height
+$alert-line-height      : 14px !default;
+
+/// $alert-font-family
+$alert-font-family      : $global-font-family !default;
+
+/// $alert-font-weight
+$alert-font-weight      : normal !default;
+
+/// $alert-default-bg
+$alert-default-bg       : $color-gray-1 !default;
+
+/// $alert-default-color
+$alert-default-color       : $color-gray-7 !default;
+
+/// $alert-default-icon-color
+$alert-default-icon-color       : $color-gray-7 !default;
+
+/// $alert-primary-bg
+$alert-primary-bg       : $color-primary-0 !default;
+
+/// $alert-primary-color
+$alert-primary-color    : $primary !default;
+
+/// $alert-primary-icon-color
+$alert-primary-icon-color    : $primary !default;
+
+/// $alert-success-bg
+$alert-success-bg       : $color-success-0 !default;
+
+/// $alert-success-color
+$alert-success-color    : $success !default;
+
+/// $alert-success-icon-color
+$alert-success-icon-color    : $success !default;
+
+/// $alert-danger-bg 
+$alert-danger-bg        : $color-danger-0 !default;
+
+/// $alert-danger-color
+$alert-danger-color     : $danger !default;
+
+/// $alert-danger-icon-color
+$alert-danger-icon-color     : $danger !default;
+
+/// $alert-warning-bg
+$alert-warning-bg       : $color-warning-0 !default;
+
+/// $alert-warning-color
+$alert-warning-color    : $warning !default;
+
+/// $alert-warning-icon-color
+$alert-warning-icon-color    : $warning !default;
+
+/// $alert-radius
+$alert-radius           : $global-radius !default;
+
+/// $alert-top-radius
+$alert-top-radius       : 0 !default;
+
+/// $alert-style 
+$alert-style            : 'color-close' !default;
+
+/// $alert-shadows
+$alert-shadows          : 0 1px 0 0 transparentize($color-gray-9, 0.9) !default;
+
+/// $alert-icon-width
+$alert-icon-width       : 12px !default;
+
+/// $alert-icon-padding
+$alert-icon-padding     : 30px !default;
+
+/// $alert-top-icon-padding
+$alert-top-icon-padding : 42px !default;
+
+/// $alert-close-font-size
+$alert-close-font-size  : 12px !default;
+
+
+@mixin alert-base() {
+  position: relative;
+  margin: $alert-margin;
+  padding: $alert-padding;
+  background-color: $alert-default-bg;
+  color: $alert-default-color;
+  border: $alert-border;
+  border-radius: $alert-radius;
+  font-family: $alert-font-family;
+  font-weight: $alert-font-weight;
+  font-size: $alert-font-size;
+  text-align: left;
+  line-height: $alert-line-height;
+
+  &.c-alert-dismissible {
+    padding-right: $alert-padding * 4;
+  }
+
+  .c-alert-close {
+    cursor: pointer;
+    background: none;
+    border: 0;
+    appearance: none;
+    opacity: 0.6;
+    font-size: $alert-close-font-size;
+    float: right;
+    color: lighten($alert-default-color, 20%);
+    text-decoration: none;
+
+    &:hover {
+      color: $alert-default-color;
+      opacity: 1;
+    }
+  }
+
+  .c-alert-link {
+    color: lighten($alert-default-color, 20%);
+    text-decoration: underline;
+
+    &:hover {
+      color: darken($alert-default-color, 20%);
+    }
+  }
+
+  &.c-alert-has-icon {
+    padding-left: $alert-icon-padding;
+  }
+
+  .c-alert-icon {
+    position: absolute;
+    top: $alert-padding;
+    left: $alert-padding;
+    bottom: $alert-padding;
+    width: $alert-icon-width;
+    font-size: $alert-icon-width;
+    color: $alert-default-icon-color;
+  }
+
+  // Respect the padding, fool.
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* stylelint-disable */
+@mixin alert-size($padding) {
+  padding-top: $padding;
+  padding-right: $padding;
+  padding-bottom: $padding;
+  padding-left: $padding;
+}
+/* stylelint-enable */
+
+@mixin alert-style($bg, $color, $icon-color, $style: $alert-style) {
+  @if $white-label == true {
+    background-color: white;
+    border-color: $color;
+    color: $color;
+  } @else {
+    background-color: $bg;
+    border-color: $color;
+    color: $color;
+  }
+
+  .c-alert-icon {
+    color: $icon-color;
+  }
+
+  @if $style  == color-close {
+    .c-alert-close,
+    .c-alert-link {
+      color: lighten($color, 20%);
+
+      &:hover {
+        color: $color;
+      }
+    }
+  } @else {
+    .c-alert-close,
+    .c-alert-link {
+      color: lighten($font-body-color, 20%);
+
+      &:hover {
+        color: $font-body-color;
+        opacity: 1;
+      }
+    }
+  }
+}

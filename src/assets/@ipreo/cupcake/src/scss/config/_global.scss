@@ -1,0 +1,55 @@
+////
+/// @group global-non-tokens
+////
+
+//TODO Make better global use
+
+/// $white-label
+$white-label: false !default;
+
+/// $white-label
+$btn-white-label: false !default;
+
+/// $primary      
+$primary          : $color-primary-8 !default;
+/// $success      
+$success          : $color-success-8 !default;
+/// $warning      
+$warning          : $color-warning-8 !default;
+/// $danger       
+$danger           : $color-danger-8 !default;
+/// $default      
+$default          : $color-gray-1 !default;
+/// $secondary    
+$secondary        : $color-gray-1 !default;
+/// $disabled     
+$disabled         : $color-gray-3 !default;
+/// $black        
+$black            : #0a0a0a !default;
+/// $white        
+$white            : #ffffff !default;
+/// $global-radius
+$global-radius    : $radius-sm !default;
+
+/// $global-border-color 
+$global-border-color: $color-gray-4 !default;
+
+/// $global-bg-color 
+$global-bg-color: $color-gray-2 !default;
+
+/// $global-bg-selected-color 
+$global-bg-selected-color: $color-primary-0 !default;
+
+/// $global-bg-hover-color 
+$global-bg-hover-color: $color-gray-0 !default;
+
+/// $global-text-color 
+$global-text-color: $font-body-color !default;
+
+/// $global-font-size
+$global-font-size: $font-body-font-size !default;
+
+/// $global-font-family
+$global-font-family: $font-body-font-family !default;
+
+

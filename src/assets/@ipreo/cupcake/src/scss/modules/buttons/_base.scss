@@ -1,0 +1,197 @@
+/// Buttons
+
+.c-btn {
+  @include btn-base;
+
+  &:focus,
+  &-focus {
+    @include btn-focus;
+  }
+
+  &:active,
+  &-active {
+    @include btn-active;
+  }
+
+  &-disabled,
+  &[disabled] {
+    @include btn-disabled;
+  }
+
+  &-primary {
+    @include btn-style($btn-primary-bg, $btn-primary-hover, $btn-primary-bd, $btn-primary-bd);
+
+    &-outline {
+      @include btn-outline($btn-primary-bg);
+    }
+
+    &-disabled,
+    &.c-btn-disabled,
+    &[disabled] {
+      @if $btn-white-label == true {
+        @include btn-disabled(rgba($btn-primary-bg, .5));
+      } @else {
+        @include btn-disabled($btn-primary-disabled, $color: $color-gray-6);
+      }
+    }
+  }
+
+  &-secondary,
+  &-default {
+    @include btn-secondary($btn-secondary-bg);
+
+    &-outline {
+      @include btn-outline($color-gray-7);
+    }
+
+    &-disabled,
+    &.c-btn-disabled,
+    &[disabled] {
+      @include btn-disabled($btn-secondary-disabled, $color: $color-gray-6);
+    }
+  }
+
+  &-success {
+    @include btn-style($btn-success-bg, $btn-success-hover, $btn-success-bd, $btn-success-bd);
+
+    &-outline {
+      @include btn-outline($btn-success-bg);
+    }
+
+    &-disabled,
+    &.c-btn-disabled,
+    &[disabled] {
+      @if $btn-white-label == true {
+        @include btn-disabled(rgba($btn-success-bg, .5));
+      } @else {
+        @include btn-disabled($btn-success-disabled, $color: $color-gray-6);
+      }
+    }
+  }
+
+  &-warning {
+    @include btn-style($btn-warning-bg, $btn-warning-hover, $btn-warning-bd, $btn-warning-bd);
+
+    &-outline {
+      @include btn-outline($btn-warning-bg);
+    }
+
+    &-disabled,
+    &.c-btn-disabled,
+    &[disabled] {
+      @if $btn-white-label == true {
+        @include btn-disabled(rgba($btn-warning-bg, .5));
+      } @else {
+        @include btn-disabled($btn-warning-disabled, $color: $color-gray-6);
+      }
+    }
+  }
+
+  &-danger {
+    @include btn-style($btn-danger-bg, $btn-danger-hover, $btn-danger-bd, $btn-danger-bd);
+
+    &-outline {
+      @include btn-outline($btn-danger-bg);
+    }
+
+    &-disabled,
+    &.c-btn-disabled,
+    &[disabled] {
+      @if $btn-white-label == true {
+        @include btn-disabled(rgba($btn-danger-bg, .5));
+      } @else {
+        @include btn-disabled($btn-danger-disabled, $color: $color-gray-6);
+      }
+    }
+  }
+
+  @if $btn-active-selected {
+    @include btn-active-selected;
+  }
+
+  &-table-icon {
+    @include btn-table-icon;
+  }
+}
+
+.c-btn-link {
+  @include btn-base;
+
+  color: $primary;
+  box-shadow: none;
+  font-weight: $btn-link-font-weight;
+
+  &:hover {
+    color: $color-primary-7;
+  }
+
+  &:active {
+    color: $color-primary-9;
+    box-shadow: none;
+  }
+
+  &.c-btn-disabled,
+  &-disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      color: $color-gray-6;
+      line-height: 1;
+      border-color: transparent;
+      cursor: not-allowed;
+      appearance: none;
+      box-shadow: none;
+      opacity: $btn-disabled-opacity;
+    }
+  }
+}
+
+
+.c-btn,
+.c-btn-link {
+  &-xs {
+    @include btn-size(xs);
+  }
+
+  &-sm {
+    @include btn-size(sm);
+  }
+
+  &-lg {
+    @include btn-size(lg);
+  }
+
+  &-xl {
+    @include btn-size(xl);
+  }
+}
+
+
+.c-btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+
+.c-btn-link {
+  &-secondary,
+  &-default {
+    @include btn-link-style($color-gray-8);
+  }
+
+  &-success {
+    @include btn-link-style($color-success-8, $color-success-7, $color-success-9);
+  }
+
+  &-warning {
+    @include btn-link-style($color-warning-8, $color-warning-7, $color-warning-9);
+  }
+
+  &-danger {
+    @include btn-link-style($color-danger-8, $color-danger-7, $color-danger-9);
+  }
+}

@@ -1,0 +1,53 @@
+////
+/// @group typography
+////
+
+/// $paragraph-margin
+$paragraph-margin               : 0 !default;
+
+/// $text-strong
+$text-strong                    : 700 !default;
+
+/// $text-small
+$text-small                    : 80% !default;
+
+/// $text-muted-opacity
+$text-muted-opeacity           : 0.6 !default;
+
+/// $text-muted-color
+$text-muted-color              : inherit !default;
+
+/// $anchor-color
+$anchor-color                   : $primary !default;
+
+/// $anchor-color-hover
+$anchor-color-hover             : lighten($primary, 5) !default;
+
+/// $anchor-decoration-hover
+$anchor-decoration-hover        : none !default;
+
+/// $anchor-color-active
+$anchor-color-active            : darken($primary, 5) !default;
+
+/// $anchor-color-disabled
+$anchor-color-disabled          : $disabled !default;
+
+// /// $hr-width                       
+$hr-width                       : 100% !default;
+
+// /// $hr-border                      
+$hr-border                      : 1px solid $color-gray-1 !default;
+
+// /// $hr-margin                      
+$hr-margin                      : 20px auto !default;
+
+
+@mixin header-styles($font-size: null, $color: $header-color, $font-weight: $font-header-md-line-height) {
+  font-family: $font-body-font-family;
+  font-weight: $font-weight;
+  color: $color;
+  margin-top: 0;
+  line-height: $font-header-md-line-height;
+  font-size: $font-size;
+}
+

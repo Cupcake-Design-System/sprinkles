@@ -1,0 +1,192 @@
+////
+/// @group buttons
+////
+
+/// $btn-font-family         
+$btn-font-family         : Arial, Helvetica, Sans-Serif !default;
+
+/// $btn-font-size           
+$btn-font-size           : 12px !default;
+
+/// $btn-v-align
+$btn-v-align             : baseline !default;
+
+/// $btn-line-height         
+$btn-line-height         : 1 !default;
+
+/// $btn-default-padding-v   
+$btn-default-padding-v   : 8px !default;
+
+/// $btn-default-padding-h   
+$btn-default-padding-h   : 24px !default;
+
+/// $btn-font-weight         
+$btn-font-weight         : bold !default;
+
+/// $btn-border-width        
+$btn-border-width        : 1px !default;
+
+/// $btn-border        
+$btn-bd                  : 1px solid transparent !default;
+
+/// $btn-radius              
+$btn-radius              : 2px !default;
+
+/// $btn-shadow-active       
+$btn-shadow-active       : inset 0 1px 2px rgba(black, 0.3) !default;
+
+/// $btn-shadow-focus       
+$btn-shadow-focus        : 0 0 2px 1px $color-primary-4 !default;
+
+/// $btn-active-selected     
+$btn-active-selected     : false !default;
+
+/// $btn-shadow              
+$btn-shadow              : false !default;
+
+/// $btn-shadow-inset
+$btn-shadow-inset: 0 1px rgba(white, .1), inset 0 0 0 1px rgba(white, .08), 0 1px 2px rgba(black, .25) !default;
+
+/// $btn-shadow-secondary
+$btn-shadow-secondary    : 0 1px 0 0 rgba(33, 37, 41, 0.1) !default;
+
+/// $btn-gradient            
+$btn-gradient            : false !default;
+
+/// $btn-border              
+$btn-border              : true !default;
+
+/// $btn-disabled-c          
+$btn-disabled-c          : $color-gray-5 !default;
+
+/// $btn-disabled-bg         
+$btn-disabled-bg         : $color-gray-1 !default;
+
+/// $btn-disabled-bd         
+$btn-disabled-bd         : 1px solid $color-gray-3 !default;
+
+/// $btn-disabled-bd-colored         
+$btn-disabled-bd-colored         : false !default;
+
+/// $btn-disabled-text-shadow
+$btn-disabled-text-shadow: 0 1px 1px rgba(255, 255, 255, 1) !default;
+
+/// $btn-disabled-opacity    
+$btn-disabled-opacity    : 1 !default;
+
+/// $btn-default-c
+$btn-default-c           : $color-gray-6 !default;
+
+/// $btn-primary-bg          
+$btn-primary-bg          : $primary !default;
+
+/// $btn-primary-bd          
+$btn-primary-bd          : $color-primary-9 !default;
+
+/// $btn-primary-disabled          
+$btn-primary-disabled    : $color-gray-3 !default;
+
+/// $btn-primary-bg          
+$btn-primary-hover       : $color-primary-7 !default;
+
+/// $btn-secondary-bg        
+$btn-secondary-bg        : $color-gray-1 !default;
+
+/// $btn-secondary-disabled          
+$btn-secondary-disabled    : $color-gray-3 !default;
+
+/// $btn-secondary-bg-hover  
+$btn-secondary-bg-hover  : $color-gray-0 !default;
+
+/// $btn-secondary-bg-active  
+$btn-secondary-bg-active : $color-gray-1 !default;
+
+/// $btn-secondary-c         
+$btn-secondary-c         : $color-gray-9 !default;
+
+/// $btn-secondary-bd        
+$btn-secondary-bd        : $color-gray-4 !default;
+
+/// $btn-success-bg          
+$btn-success-bg          : $success !default;
+
+/// $btn-success-bd           
+$btn-success-bd           : $color-success-9 !default;
+
+/// $btn-success-disabled          
+$btn-success-disabled    : $color-gray-3 !default;
+
+/// $btn-success-hover          
+$btn-success-hover       : $color-success-7 !default;
+
+/// $btn-warning-bg          
+$btn-warning-bg          : $warning !default;
+
+/// $btn-warning-bd           
+$btn-warning-bd           : $color-warning-9 !default;
+
+/// $btn-warning-disabled          
+$btn-warning-disabled    : $color-gray-3 !default;
+
+/// $btn-warning-hover          
+$btn-warning-hover       : $color-warning-7 !default;
+
+/// $btn-danger-bg           
+$btn-danger-bg           : $danger !default;
+
+/// $btn-danger-bd           
+$btn-danger-bd           : $color-danger-9 !default;
+
+/// $btn-success-disabled          
+$btn-danger-disabled    : $color-gray-3 !default;
+
+/// $btn-danger-hover          
+$btn-danger-hover        : $color-danger-7 !default;
+
+/// $btn-link-font-weight          
+$btn-link-font-weight    : $btn-font-weight !default;
+
+/// $btn-xs-font
+$btn-xs-font             : 11px !default;
+
+/// $btn-xs-padding
+$btn-xs-padding          : 4px 8px 3px !default;
+
+/// $btn-sm-font
+$btn-sm-font             : 11px !default;
+
+/// $btn-sm-padding
+$btn-sm-padding          : 6px 16px !default;
+
+/// $btn-lg-font             
+$btn-lg-font             : 16px !default;
+
+/// $btn-lg-padding          
+$btn-lg-padding          : 12px 32px 11px !default;
+
+/// $btn-xl-font             
+$btn-xl-font             : 18px !default;
+
+/// $btn-xl-padding          
+$btn-xl-padding          : 18px 40px !default;
+
+/// $btn-box-width
+$btn-box-width           : 30px !default;
+
+/// $btn-box-width-xs
+$btn-box-width-xs        : 20px !default;
+
+/// $btn-box-width-sm
+$btn-box-width-sm        : 25px !default;
+
+/// $btn-box-width-lg
+$btn-box-width-lg        : 40px !default;
+
+/// $btn-box-width-xl
+$btn-box-width-xl        : 55px !default;
+
+/// $btn-caret-width
+$btn-caret-width         : 25px !default;
+
+/// $btn-icon-dropdown
+$btn-icon-dropdown-width : 45px !default;

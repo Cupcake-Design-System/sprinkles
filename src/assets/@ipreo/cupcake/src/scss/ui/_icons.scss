@@ -1,0 +1,20 @@
+$icon-sizes: (
+  xs: $sizing-icon-xs,
+  sm: $sizing-icon-sm,
+  md: $sizing-icon-md,
+  lg: $sizing-icon-lg,
+  xl: $sizing-icon-xl
+) !default;
+
+.c-icon {
+  font-size: $sizing-icon-md;
+}
+
+@mixin icon-class-export {
+  @each $size, $icon-size in $icon-sizes {
+    .c-icon-#{$size} {
+      font-size: #{$icon-size};
+    }
+  }
+}
+

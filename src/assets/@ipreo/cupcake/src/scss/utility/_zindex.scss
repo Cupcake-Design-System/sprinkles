@@ -1,0 +1,16 @@
+$zindex: (
+  header    : 900,
+  nav       : 800,
+  alert     : 700,
+  modal     : 600,
+  page      : 500,
+  footer    : 400
+);
+
+@function z($layer) {
+  @if not map-has-key($zindex, $layer) {
+    @warn "No layer found for `#{$layer}` in $z-layers map. Property omitted.";
+  }
+
+  @return map-get($zindex, $layer);
+}

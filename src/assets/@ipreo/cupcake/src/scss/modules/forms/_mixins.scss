@@ -1,0 +1,89 @@
+@mixin label {
+  display: block;
+  width: 100%;
+  padding: $control-label-padding;
+  color: $control-color;
+  font-size: $control-font-size;
+}
+
+@mixin input {
+  display: block;
+  width: 100%;
+  height: $control-height;
+  padding: $control-padding-v $control-padding-h;
+  border: $control-border-width solid $control-border;
+  border-radius: $control-border-radius;
+  outline: 0;
+  color: $control-color;
+  background-color: $control-background;
+  font-family: inherit;
+  font-size: $control-font-size;
+  font-weight: $control-font-weight;
+  line-height: $control-line-height;
+  box-shadow: $control-shadow;
+  resize: vertical;
+  appearance: none;
+  transition: $control-transition;
+
+  &::-ms-clear {
+    display: none;
+  }
+
+  &::placeholder {
+    color: $control-placeholder-c;
+    transition: $control-transition;
+  }
+
+  &:hover,
+  &#{&}-hover {
+    border-color: $control-hover-border;
+
+    &::placeholder {
+      color: $control-placeholder-hover-c;
+    }
+  }
+
+  &:focus,
+  &#{&}-focus {
+    border-color: $control-active-border;
+    box-shadow: $control-focused-shadow;
+  }
+
+  // in separete selector beacause it breakes ie11
+  &:focus-within {
+    border-color: $control-active-border;
+  }
+
+  &[disabled],
+  &-disabled {
+    &,
+    &:hover {
+      @include input-disabled;
+    }
+
+    & ~ .c-input-icon {
+      color: $control-disabled-border;
+    }
+  }
+
+  &-inline {
+    display: inline;
+    width: auto;
+  }
+
+  &-container {
+    position: relative;
+  }
+}
+
+@mixin input-disabled {
+  border-color: $control-disabled-border;
+  background-color: $control-disabled-background;
+  box-shadow: $control-shadow-disabled;
+  cursor: not-allowed;
+  color: $control-placeholder-c;
+
+  &::placeholder {
+    color: $control-placeholder-c;
+  }
+}

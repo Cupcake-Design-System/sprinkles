@@ -1,0 +1,195 @@
+@import "mixins";
+
+.c-p {
+  @include font-body;
+
+  margin: $paragraph-margin;
+  padding: 0;
+}
+
+.c-body-text,
+.c-text {
+  @include font-body;
+
+  &-xxl {
+    @include font-body-xxl;
+  }
+
+  &-xl {
+    @include font-body-xl;
+  }
+
+  &-lg {
+    @include font-body-lg;
+  }
+
+  &-md {
+    @include font-body-md;
+  }
+
+  &-sm {
+    @include font-body-sm;
+  }
+
+  &-xs {
+    @include font-body-xs;
+  }
+}
+
+.c-header {
+  &-xxl {
+    @include font-header-xxl;
+  }
+
+  &-xl {
+    @include font-header-xl;
+  }
+
+  &-lg {
+    @include font-header-lg;
+  }
+
+  &-md {
+    @include font-header-md;
+  }
+
+  &-sm {
+    @include font-header-sm;
+  }
+
+  &-xs {
+    @include font-header-xs;
+  }
+}
+
+// Emphasized text
+.c-text-em,
+.c-text-italic {
+  font-style: italic;
+  line-height: inherit;
+}
+
+
+.c-text-extralight {
+  font-weight: 200;
+}
+
+.c-text-light {
+  font-weight: 300;
+}
+
+.c-text-strong,
+.c-text-bold {
+  font-weight: $text-strong;
+  line-height: inherit;
+}
+
+.c-text-extrabold {
+  font-weight: 800;
+}
+
+.c-text-heavy {
+  font-weight: 900;
+}
+
+.c-a,
+.c-link {
+  color: $anchor-color;
+  text-decoration: none;
+  line-height: inherit;
+  cursor: pointer;
+
+  &-hover,
+  &:hover {
+    text-decoration: $anchor-decoration-hover;
+    color: $anchor-color-hover;
+  }
+
+  &-active,
+  &:active {
+    color: $anchor-color-active;
+    text-decoration: none;
+  }
+
+  &-disabled,
+  &[disabled],
+  &:disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+      color: $anchor-color-disabled;
+      text-decoration: none;
+      cursor: not-allowed;
+    }
+  }
+
+  img {
+    border: 0;
+  }
+}
+
+// Horizontal rule
+.c-hr {
+  max-width: $hr-width;
+  height: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: $hr-border;
+  border-left: 0;
+  margin: $hr-margin;
+  clear: both;
+}
+
+
+// Small text
+small,
+.c-text-small {
+  font-size: $text-small;
+  line-height: inherit;
+}
+
+// Clearfix
+.c-clearfix {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+.c-text-lowercase {
+  text-transform: lowercase;
+}
+
+.c-text-uppercase {
+  text-transform: uppercase;
+}
+
+.c-text-capitalize {
+  text-transform: capitalize;
+}
+
+.c-text-nowrap {
+  white-space: nowrap;
+}
+
+.c-text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c-text-shadow {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.c-text-muted {
+  color: $text-muted-color;
+  opacity: $text-muted-opeacity;
+}

@@ -1,0 +1,274 @@
+////
+/// @group modals
+////
+
+/// $modals-z-index
+$modals-z-index: 1050 !default;
+
+/// $modals-dialog-top-magin
+$modals-dialog-top-magin: 30px !default;
+
+/// $modals-confirmation-margin-top
+$modals-confirmation-margin-top: 140px !default;
+
+/// $modals-confirmation-margin-top
+$modals-confirmation-width: 400px !default;
+
+/// $modals-width
+$modals-width: 600px !default;
+
+/// $modals-border-radius
+$modals-border-radius: .3rem !default;
+
+/// $modals-box-shadow
+$modals-shadow: 0 6px 20px 0 rgba($global-text-color, 0.8) !default;
+
+/// $modals-header-border
+$modals-border: 1px solid $color-gray-3 !default;
+
+/// $modals-transition
+$modals-transition: opacity .35s !default;
+
+/// $modals-close-absolute
+$modals-close-absolute: false !default;
+
+/// $modals-close-top-right
+$modals-close-size: 30px !default;
+
+/// $modals-close-padding
+$modals-close-padding: 0 2px !default;
+
+/// $modals-close-color
+$modals-close-color: $color-gray-6 !default;
+
+/// $modals-close-font-size
+$modals-close-font-size: 1.5rem !default;
+
+/// $modals-default-color
+$modals-default-color: $global-text-color !default;
+
+/// $modals-body-font-size
+$modals-body-font-size: $font-body-font-size !default;
+
+/// $modals-title-font-size
+$modals-title-font-size: 14px !default;
+
+/// $modals-title-font-weight
+$modals-title-font-weight: $font-header-sm-font-weight !default;
+
+/// $modals-close-button-transform-degrees
+$modals-close-button-transform-degrees: 45deg !default;
+
+/// $modals-background-color
+$modals-background-color: #ffffff !default;
+
+/// $modals-backdrop-background-color
+$modals-backdrop-background-color: #000000 !default;
+
+/// $modals-confirmation-icon-fs
+$modals-confirmation-icon-fs: 17px !default;
+
+/// $modals-confirmation-icon-danger-c
+$modals-confirmation-icon-danger-c: $color-danger-8 !default;
+
+/// $modals-confirmation-icon-info-c
+$modals-confirmation-icon-info-c: $color-primary-4 !default;
+
+/// $modals-confirmation-icon-margin
+$modals-confirmation-icon-margin: 16px 0 12px !default;
+
+/// $modals-confirmation-title-fs
+$modals-confirmation-title-fs: $font-header-sm-font-size !default;
+
+/// $modals-confirmation-title-weight
+$modals-confirmation-title-weight: $font-header-sm-font-weight !default;
+
+/// $modals-confirmation-title-margin
+$modals-confirmation-title-margin: 0 0 15px !default;
+
+/// $modals-confirmation-text-margin
+$modals-confirmation-text-margin: 0 !default;
+
+/// $modals-confirmation-buttons-margin
+$modals-confirmation-buttons-margin: 25px 0 15px !default;
+
+/// $modal-body-padding
+$modal-body-padding: 20px !default;
+
+/// $modal-header-padding
+$modal-header-padding: 12px 20px !default;
+
+/// $modal-footer-padding
+$modal-footer-padding: 10px 20px !default;
+
+
+@mixin modal-base {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  outline: 0 none;
+  overflow: hidden;
+  z-index: $modals-z-index;
+
+  &-fade {
+    opacity: 0;
+    transition: $modals-transition;
+
+    &.c-modal-in {
+      opacity: 1;
+    }
+  }
+
+  &-open {
+    overflow: hidden;
+
+    .c-modal {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+
+  &-dialog {
+    margin: $modals-dialog-top-magin auto;
+    max-width: $modals-width;
+
+    .c-modal-danger &,
+    .c-modal-info & {
+      width: $modals-confirmation-width;
+      margin-top: $modals-confirmation-margin-top;
+    }
+  }
+
+  &-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: $modals-border;
+    background-color: $modals-background-color;
+    background-clip: padding-box;
+    outline: 0 none;
+    box-shadow: $modals-shadow;
+    border-radius: $modals-border-radius;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $modal-header-padding;
+    border-bottom: $modals-border;
+    border-top-left-radius: $modals-border-radius;
+    border-top-right-radius: $modals-border-radius;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: $modal-footer-padding;
+    border-top: $modals-border;
+    border-bottom-left-radius: $modals-border-radius;
+    border-bottom-right-radius: $modals-border-radius;
+  }
+
+  &-title {
+    width: 100%;
+    margin: 0;
+    color: $modals-default-color;
+    font-size: $modals-title-font-size;
+    font-weight: $modals-title-font-weight;
+  }
+
+  &-body {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 1px; // IE11 fix.
+    padding: $modal-body-padding;
+
+    @include font-body;
+  }
+
+
+  &-backdrop {
+    background-color: $modals-backdrop-background-color;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: $modals-z-index - 10;
+
+    &.c-modal-fade {
+      opacity: 0;
+    }
+
+    &.c-modal-fade.c-modal-in {
+      opacity: 0.5;
+    }
+  }
+
+  &-confirmation-icon {
+    font-size: $modals-confirmation-icon-fs;
+    margin: $modals-confirmation-icon-margin;
+
+    .c-modal-danger & {
+      color: $modals-confirmation-icon-danger-c;
+    }
+
+    .c-modal-info & {
+      color: $modals-confirmation-icon-info-c;
+    }
+  }
+
+  &-confirmation-title {
+    font-size: $modals-confirmation-title-fs;
+    font-weight: $modals-confirmation-title-weight;
+    margin: $modals-confirmation-title-margin;
+  }
+
+  &-confirmation-text {
+    margin: $modals-confirmation-text-margin;
+  }
+
+  &-confirmation-buttons {
+    margin: $modals-confirmation-buttons-margin;
+  }
+}
+
+
+@mixin modal-close {
+  @if $modals-close-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $modals-close-size;
+    height: $modals-close-size;
+  }
+
+  color: $modals-close-color;
+  opacity: 0.4;
+  cursor: pointer;
+  font-size: $modals-close-font-size;
+  font-weight: 700;
+  line-height: 1;
+  transition: color 0.1s linear;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  /* stylelint-disable */
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+
+  &.c-btn {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,92 @@
+////
+/// @group spacing
+////
+
+@import "../config/tokens";
+
+/// $space-none
+$space-none: $spacing-none !default;
+
+/// $space-xs
+$space-xs: $spacing-xs !default;
+
+/// $space-sm
+$space-sm: $spacing-sm !default;
+
+/// $space-md
+$space-md: $spacing-md !default;
+
+/// $space-lg
+$space-lg: $spacing-lg !default;
+
+/// $space-xl
+$space-xl: $spacing-xl !default;
+
+/// $space-xxl
+$space-xxl: $spacing-xxl !default;
+
+/// $space-xxxl
+$space-xxxl: $spacing-xxxl !default;
+
+$space-values : (
+  0   : $space-none,
+  xs  : $space-xs,
+  sm  : $space-sm,
+  md  : $space-md,
+  lg  : $space-lg,
+  xl  : $space-xl,
+  xxl : $space-xxl,
+  xxxl: $space-xxxl,
+) !default;
+
+$space-prefixes : (
+  p       : padding,
+  p-top   : padding-top,
+  p-right : padding-right,
+  p-bottom: padding-bottom,
+  p-left  : padding-left,
+  m       : margin,
+  m-top   : margin-top,
+  m-right : margin-right,
+  m-bottom: margin-bottom,
+  m-left  : margin-left,
+) !default;
+
+@mixin space-class-export {
+  @each $attr-short, $attr-long in $space-prefixes {
+    @each $value-name, $value-size in $space-values {
+      .c-#{$attr-short}-#{$value-name}.c-#{$attr-short}-#{$value-name} {
+        #{$attr-long}: #{$value-size};
+      }
+    }
+  }
+
+  @each $value-name, $value-size in $space-values {
+    .c-p-horizontal-#{$value-name}.c-p-horizontal-#{$value-name} {
+      padding-right: #{$value-size};
+      padding-left: #{$value-size};
+    }
+  }
+
+  @each $value-name, $value-size in $space-values {
+    .c-p-vertical-#{$value-name}.c-p-vertical-#{$value-name} {
+      padding-top: #{$value-size};
+      padding-bottom: #{$value-size};
+    }
+  }
+
+  @each $value-name, $value-size in $space-values {
+    .c-m-horizontal-#{$value-name}.c-m-horizontal-#{$value-name} {
+      margin-right: #{$value-size};
+      margin-left: #{$value-size};
+    }
+  }
+
+  @each $value-name, $value-size in $space-values {
+    .c-m-vertical-#{$value-name}.c-m-vertical-#{$value-name} {
+      margin-top: #{$value-size};
+      margin-bottom: #{$value-size};
+    }
+  }
+}
+

@@ -1,0 +1,44 @@
+////
+/// @group file upload
+////
+
+/// $file-upload-padding
+$file-upload-padding    : 0.5rem 1rem !default;
+/// $file-upload-margin
+$file-upload-margin     : 0.5rem !default;
+/// $file-upload-color
+$file-upload-color      : $primary !default;
+/// $file-upload-bg 
+$file-upload-bg         : rgba($primary, .09) !default;
+/// $file-upload-bd 
+$file-upload-bd         : 2px dashed $primary !default;
+/// $file-upload-bd-radius 
+$file-upload-bd-radius  : 6px !default;
+/// $file-upload-fs  
+$file-upload-fs         : 0.8rem !default;
+/// $file-upload-fa-fs 
+$file-upload-fa-fs      : 1.25rem !default;
+
+.c-file-upload {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: $file-upload-bd-radius;
+  border: $file-upload-bd;
+  background: $file-upload-bg;
+  padding: $file-upload-padding;
+  color: $file-upload-color;
+  font-weight: bold;
+  font-size: $file-upload-fs;
+
+  .c-btn {
+    margin-left: $file-upload-margin;
+  }
+
+  .fa {
+    margin-right: $file-upload-margin;
+    font-size: $file-upload-fa-fs;
+  }
+}

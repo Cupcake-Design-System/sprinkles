@@ -1,0 +1,180 @@
+// INPUT GROUP
+.c-input-group {
+  display: flex;
+
+  .c-btn,
+  .c-input-addon,
+  .c-input-container {
+    &:not(:first-child) {
+      margin-left: -$control-border-width;
+    }
+  }
+
+  .c-input-container {
+    z-index: 1;
+
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+  }
+
+  .c-btn {
+    &:focus,
+    &:active {
+      z-index: 2;
+    }
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+
+  .c-input-container {
+    flex: 1 0 auto;
+
+    &-fixed {
+      flex: 0 1 auto;
+    }
+
+    .c-input {
+      height: 100%;
+    }
+
+    &:first-child .c-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child .c-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) .c-input {
+      border-radius: 0;
+    }
+  }
+}
+
+.c-input-group-rounded {
+  .c-btn {
+    &:first-child {
+      border-top-left-radius: $control-border-radius-rounded;
+      border-bottom-left-radius: $control-border-radius-rounded;
+    }
+
+    &:last-child {
+      border-top-right-radius: $control-border-radius-rounded;
+      border-bottom-right-radius: $control-border-radius-rounded;
+    }
+  }
+
+  .c-input-container {
+    &:first-child .c-input {
+      border-top-left-radius: $control-border-radius-rounded;
+      border-bottom-left-radius: $control-border-radius-rounded;
+    }
+
+    &:last-child .c-input {
+      border-top-right-radius: $control-border-radius-rounded;
+      border-bottom-right-radius: $control-border-radius-rounded;
+    }
+  }
+}
+
+.c-input-group-rounded-left {
+  .c-btn {
+    &:first-child {
+      border-top-left-radius: $control-border-radius-rounded;
+      border-bottom-left-radius: $control-border-radius-rounded;
+    }
+  }
+
+  .c-input-container {
+    &:first-child .c-input {
+      border-top-left-radius: $control-border-radius-rounded;
+      border-bottom-left-radius: $control-border-radius-rounded;
+    }
+  }
+}
+
+.c-input-group-rounded-right {
+  .c-btn {
+    &:last-child {
+      border-top-right-radius: $control-border-radius-rounded;
+      border-bottom-right-radius: $control-border-radius-rounded;
+    }
+  }
+
+  .c-input-container {
+    &:last-child .c-input {
+      border-top-right-radius: $control-border-radius-rounded;
+      border-bottom-right-radius: $control-border-radius-rounded;
+    }
+  }
+}
+
+.c-input-group-stacked {
+  display: flex;
+  flex-wrap: wrap;
+
+  .c-btn,
+  .c-input-addon,
+  .c-input-container {
+    &:not(:first-child) {
+      margin-left: 0; // reset margin from .c-input-group
+      margin-top: -$control-border-width;
+    }
+  }
+
+  .c-input-container,
+  .c-btn {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .c-btn {
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:first-child {
+      border-radius: $control-border-radius $control-border-radius 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $control-border-radius $control-border-radius;
+    }
+  }
+
+  .c-input-container {
+    &:not(:first-child):not(:last-child) .c-input {
+      border-radius: 0;
+    }
+
+    &:first-child .c-input {
+      border-radius: $control-border-radius $control-border-radius 0 0;
+    }
+
+    &:last-child .c-input {
+      border-radius: 0 0 $control-border-radius $control-border-radius;
+    }
+  }
+}
+
+.c-form-group {
+  margin-bottom: $control-group-padding;
+}

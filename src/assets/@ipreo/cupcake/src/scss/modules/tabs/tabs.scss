@@ -1,0 +1,147 @@
+@import 'mixins';
+
+.c-tabs {
+  @include tabs;
+
+  .c-tab-item {
+    @include tab-item;
+  }
+
+  .c-tab-item-link {
+    @include tab-item-link;
+  }
+
+  .c-tab-item-link-active {
+    @include tab-item-active;
+  }
+
+  .c-tab-item-link-disabled {
+    @include tab-item-disabled;
+  }
+}
+
+.c-tabs-bordered {
+  border-bottom: $tabs-borders;
+  box-shadow: none;
+
+  .c-tab-item {
+    .c-tab-item-link {
+      border: $tabs-borders;
+      border-bottom: 0;
+      background: $tabs-bg;
+      color: $tabs-color;
+      margin-right: $tabs-bordered-space-between;
+      margin-bottom: 0;
+      padding: $tabs-bordered-link-padding;
+      border-radius: $tabs-border-radius $tabs-border-radius 0 0;
+
+      &:hover {
+        background: $tabs-bg-hover;
+        transition: $tabs-hover-transition;
+        color: $tabs-color-hover;
+      }
+    }
+
+    .c-tab-item-link-active {
+      background: $tabs-bg-active;
+      color: $tabs-color-active;
+    }
+  }
+
+  .c-tabs-right,
+  .c-tab-item {
+    &:last-child {
+      margin-right: -$tabs-bordered-space-between;
+    }
+  }
+}
+
+.c-tabs-toggle {
+  border-bottom: 0;
+  box-shadow: none;
+
+  .c-tab-item {
+    border: $tabs-borders;
+    margin-left: -1px;
+    color: $tabs-color;
+
+    &:first-child {
+      border-radius: $tabs-border-radius 0 0 $tabs-border-radius;
+      margin-left: 0;
+    }
+
+    &:last-child {
+      border-radius: 0 $tabs-border-radius $tabs-border-radius 0;
+    }
+
+    &:hover {
+      background-color: $tabs-bg;
+      z-index: 2;
+      transition: $tabs-hover-transition;
+
+      &:first-child {
+        border-radius: $tabs-border-radius 0 0 $tabs-border-radius;
+      }
+
+      &:last-child {
+        border-radius: 0 $tabs-border-radius $tabs-border-radius 0;
+      }
+    }
+  }
+
+  .c-tab-item-link {
+    margin: 0;
+    padding: $tabs-toggle-link-padding;
+    width: 100%;
+    border-bottom: 0;
+    text-align: center;
+
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+
+  .c-tab-item-link-active {
+    border: 0;
+    background-color: $tabs-bg-active;
+
+    &:hover {
+      background-color: $tabs-bg-active;
+      transition: $tabs-hover-transition;
+    }
+  }
+}
+
+
+.c-tabs-fullwidth {
+  .c-tab-item {
+    flex: 1;
+  }
+}
+
+.c-tabs-right {
+  justify-content: flex-end;
+}
+
+.c-tabs-center {
+  flex: none;
+  justify-content: center;
+}
+
+.c-tabs-xs {
+  .c-tab-item-link {
+    font-size: $tab-font-size-xs;
+  }
+}
+
+.c-tabs-sm {
+  .c-tab-item-link {
+    font-size: $tab-font-size-sm;
+  }
+}
+
+.c-tabs-lg {
+  .c-tab-item-link {
+    font-size: $tab-font-size-lg;
+  }
+}

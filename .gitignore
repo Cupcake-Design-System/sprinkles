@@ -50,3 +50,5 @@ Thumbs.db
 .npmrc
 
 test-report.xml
+
+storybook-static/

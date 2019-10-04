@@ -1,0 +1,40 @@
+////
+/// @group shadows
+////
+
+/// $shadow-xs
+$shadow-xs: 0 1.5px 3px rgba(0, 0, 0, .24), 1px 3px 8px rgba(0, 0, 0, .05) !default;
+/// $shadow-sm
+$shadow-sm: 0 4px 7px rgba(0, 0, 0, .23),   0 8px 25px rgba(0, 0, 0, .05) !default;
+/// $shadow-md
+$shadow-md: 0 7px 10px rgba(0, 0, 0, .3),  0 10px 50px rgba(0, 0, 0, .12) !default;
+/// $shadow-lg
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, .28), 0 15px 60px rgba(0, 0, 0, .18) !default;
+/// $shadow-xl
+$shadow-xl: 0 16px 20px rgba(0, 0, 0, .29), 0 20px 65px rgba(0, 0, 0, .18) !default;
+
+
+$default-shadows: (
+  0: none,
+  xs: $shadow-xs,
+  sm: $shadow-sm,
+  md: $shadow-md,
+  lg: $shadow-lg,
+  xl: $shadow-xl
+);
+
+@mixin drop-shadow($depth) {
+  @each $size, $shadow in $default-shadows {
+    @if $depth == $size {
+      box-shadow: #{$shadow};
+    }
+  }
+}
+
+@mixin shadow-class-export {
+  @each $size, $shadow in $default-shadows {
+    .c-depth-#{$size} {
+      box-shadow: #{$shadow};
+    }
+  }
+}

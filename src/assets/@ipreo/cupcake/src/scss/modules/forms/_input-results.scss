@@ -1,0 +1,30 @@
+
+.c-input-results {
+  .c-input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: $white;
+    box-shadow: $control-results-shadow;
+    border: $control-results-border;
+    border-top: 0;
+    list-style: none;
+    margin-left: 0;
+    border-bottom-left-radius: $global-radius;
+    border-bottom-right-radius: $global-radius;
+
+    li {
+      padding: 0.5em;
+
+      &:not(:last-child) {
+        border-bottom: $control-results-border;
+      }
+    }
+  }
+}
+
