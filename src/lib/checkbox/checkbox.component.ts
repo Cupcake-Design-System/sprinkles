@@ -1,34 +1,32 @@
 import {
-  Component,
-  ElementRef,
-  Input,
-  Renderer2,
-  forwardRef,
-  ViewChild,
   AfterViewInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
-} from '@angular/core';
-import {
-  mixinColor,
-  CupcakeFlavors,
-  mixinSize,
-  CupcakeSizes,
-} from '../common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  forwardRef,
+  Input,
+  Renderer2,
+  ViewChild
+} from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { CupcakeFlavors, CupcakeSizes, mixinColor, mixinSize } from "../common";
 
-const CLASS_BASE = 'checkbox';
+const CLASS_BASE = "checkbox";
 
 export class CheckboxBase {
-  constructor(public renderer: Renderer2) { }
+  constructor(public renderer: Renderer2) {}
 }
 
-export const CheckboxMixinBase = mixinSize(mixinColor(CheckboxBase, CLASS_BASE), CLASS_BASE);
+export const CheckboxMixinBase = mixinSize(
+  mixinColor(CheckboxBase, CLASS_BASE),
+  CLASS_BASE
+);
 
 @Component({
-  selector: 'spr-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss'],
+  selector: "spr-checkbox",
+  templateUrl: "./checkbox.component.html",
+  styleUrls: ["./checkbox.component.scss"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -38,7 +36,8 @@ export const CheckboxMixinBase = mixinSize(mixinColor(CheckboxBase, CLASS_BASE),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CheckboxComponent extends CheckboxMixinBase implements ControlValueAccessor, AfterViewInit {
+export class CheckboxComponent extends CheckboxMixinBase
+  implements ControlValueAccessor, AfterViewInit {
   @Input() disabled = false;
   @Input() color: CupcakeFlavors = undefined;
   @Input() size: CupcakeSizes = undefined;
@@ -47,7 +46,7 @@ export class CheckboxComponent extends CheckboxMixinBase implements ControlValue
   get checked() {
     return this._checked;
   }
-  @Input('checked') set checked(val) {
+  @Input("checked") set checked(val) {
     if (this._checked === val) {
       return;
     }
@@ -57,13 +56,16 @@ export class CheckboxComponent extends CheckboxMixinBase implements ControlValue
     this.onTouched();
   }
 
-  @ViewChild('mixinRef') mixinRef: ElementRef;
-  constructor(public renderer: Renderer2, private readonly changeDetector: ChangeDetectorRef) {
+  @ViewChild("mixinRef", { static: true }) mixinRef: ElementRef;
+  constructor(
+    public renderer: Renderer2,
+    private readonly changeDetector: ChangeDetectorRef
+  ) {
     super(renderer);
   }
 
-  onChange: any = () => { };
-  onTouched: any = () => { };
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
   ngAfterViewInit() {
     if (!this.color) this.color = CupcakeFlavors.Primary;

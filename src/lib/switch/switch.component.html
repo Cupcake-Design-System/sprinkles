@@ -1,5 +1,6 @@
 <label #mixinRef class="c-switch" [ngClass]="{'c-switch-disabled': disabled}">
   <input #inputRef type="checkbox" class="c-switch-input" [checked]="checked" [disabled]="disabled" (click)="toggle()">
-  <span class="c-switch-label" [attr.data-on]="noText ? '' : on" [attr.data-off]="noText ? '' : off"></span>
+  <span class="c-switch-label" [attr.data-on]="noText ? '' : on" [attr.data-off]="noText ? '' : off">
+  </span>
   <span class="c-switch-handle"></span>
 </label>

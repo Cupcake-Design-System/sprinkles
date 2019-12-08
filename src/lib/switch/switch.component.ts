@@ -1,72 +1,70 @@
 import {
-  Component,
-  Input,
-  forwardRef,
-  Renderer2,
-  ElementRef,
-  ViewChild,
   AfterViewInit,
+  Component,
+  ElementRef,
+  forwardRef,
   HostBinding,
   HostListener,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { mixinColor, mixinSize, CupcakeFlavors, CupcakeSizes } from '../common';
+  Input,
+  Renderer2,
+  ViewChild
+} from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { CupcakeFlavors, CupcakeSizes, mixinColor, mixinSize } from "../common";
 
-const CLASS_BASE = 'switch';
+const CLASS_BASE = "switch";
 
 export class SwitchBase {
-  constructor(public renderer: Renderer2) { }
+  constructor(public renderer: Renderer2) {}
 }
 
-export const SwitchMixinBase = mixinSize(mixinColor(SwitchBase, CLASS_BASE), CLASS_BASE);
+export const SwitchMixinBase = mixinSize(
+  mixinColor(SwitchBase, CLASS_BASE),
+  CLASS_BASE
+);
 
 @Component({
-  selector: 'spr-switch',
-  templateUrl: './switch.component.html',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => SwitchComponent),
-    multi: true
-  }]
+  selector: "spr-switch",
+  templateUrl: "./switch.component.html",
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SwitchComponent),
+      multi: true
+    }
+  ]
 })
-export class SwitchComponent extends SwitchMixinBase implements ControlValueAccessor, AfterViewInit {
-  @Input()
-  disabled = false;
-  @Input()
-  color: CupcakeFlavors = undefined;
-  @Input()
-  size: CupcakeSizes = undefined;
-  @Input()
-  on = 'ON';
-  @Input()
-  off = 'OFF';
-  @Input()
-  noText: boolean;
+export class SwitchComponent extends SwitchMixinBase
+  implements ControlValueAccessor, AfterViewInit {
+  @Input() disabled = false;
+  @Input() color: CupcakeFlavors = undefined;
+  @Input() size: CupcakeSizes = undefined;
+  @Input() on = "ON";
+  @Input() off = "OFF";
+  @Input() noText: boolean;
 
-  @Input()
-  @HostBinding('tabindex')
-  public tabindex = -1;
+  @Input() @HostBinding("tabindex") public tabindex = -1;
 
   _checked = false;
   get checked() {
     return this._checked;
   }
-  @Input('checked')
-  set checked(val) {
+
+  @Input("checked") set checked(val) {
     this._checked = val;
     this.onChange(val);
     this.onTouched();
   }
 
-  @ViewChild('mixinRef') mixinRef: ElementRef;
+  @ViewChild("mixinRef", { static: true }) mixinRef: ElementRef;
 
-  @ViewChild('inputRef') inputRef: ElementRef;
+  @ViewChild("inputRef", { static: true }) inputRef: ElementRef;
 
   constructor(public renderer: Renderer2, public el: ElementRef) {
     super(renderer);
   }
 
-  @HostListener('focus')
+  @HostListener("focus")
   public onHostFocus() {
     this.inputRef.nativeElement.focus();
   }
@@ -75,8 +73,8 @@ export class SwitchComponent extends SwitchMixinBase implements ControlValueAcce
     if (!this.color) this.color = CupcakeFlavors.Primary;
   }
 
-  onChange: any = () => { };
-  onTouched: any = () => { };
+  onChange: any = () => {};
+  onTouched: any = () => {};
 
   registerOnChange(fn) {
     this.onChange = fn;

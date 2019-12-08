@@ -1,0 +1,19 @@
+<button type="button" #switchElement class="ant-switch" [disabled]="nzDisabled" [class.ant-switch-checked]="checked"
+  [class.ant-switch-loading]="nzLoading" [class.ant-switch-disabled]="nzDisabled"
+  [class.ant-switch-small]="size === 'small'" (keydown)="onKeyDown($event)">
+  <i *ngIf="nzLoading" nzType="loading" class="ant-switch-loading-icon"></i>
+  <span class="ant-switch-inner">
+    <span>
+      <ng-container *ngIf="checked">
+        <ng-container *stringTemplateOutlet="checkedChildren">{{
+          checkedChildren
+        }}</ng-container>
+      </ng-container>
+      <ng-container *ngIf="!checked">
+        <ng-container *stringTemplateOutlet="nzUnCheckedChildren">{{
+          nzUnCheckedChildren
+        }}</ng-container>
+      </ng-container>
+    </span>
+  </span>
+</button>

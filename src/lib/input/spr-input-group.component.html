@@ -1,0 +1,56 @@
+<div class="c-input-group" *ngIf="isAddOn">
+
+  <div class="c-input-addon" *ngIf="addOnBefore || beforeIcon">
+    <i class="fas fa-{{beforeIcon}}" *ngIf="beforeIcon"></i>
+    <ng-container *stringTemplateOutlet="addOnBefore">{{ addOnBefore }}</ng-container>
+  </div>
+
+  <ng-container *ngIf="!isAffix">
+    <div class="c-input-container">
+      <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>
+    </div>
+  </ng-container>
+
+  <div class="ant-input-affix-wrapper" [class.ant-input-affix-wrapper-sm]="isSmall"
+    [class.ant-input-affix-wrapper-lg]="isLarge" *ngIf="isAffix">
+    <ng-template *ngTemplateOutlet="affixTemplate"></ng-template>
+  </div>
+
+  <div class="c-input-addon" *ngIf="addOnAfter || afterIcon">
+    <i class="fas fa-{{afterIcon}}" *ngIf="afterIcon"></i>
+    <ng-container *stringTemplateOutlet="addOnAfter">{{ addOnAfter }}</ng-container>
+  </div>
+
+</div>
+
+<ng-container *ngIf="isAffix && !isAddOn">
+  <ng-template *ngTemplateOutlet="affixTemplate"></ng-template>
+</ng-container>
+
+
+<ng-template #affixTemplate>
+  <div class="c-input-container">
+    <i class="c-input-icon fas fa-{{prefixIcon}}" *ngIf="prefixIcon" [class.c-input-icon-lg]="isLarge"
+      [class.c-input-icon-sm]="isSmall"></i>
+    <span class="c-input-prefix" *ngIf="prefix">
+      <ng-container *stringTemplateOutlet="prefix">{{ prefix }}</ng-container>
+    </span>
+
+    <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>
+
+    <i class="c-input-icon fas fa-{{suffixIcon}}" *ngIf="suffixIcon" [class.c-input-icon-lg]="isLarge"
+      [class.c-input-icon-sm]="isSmall"></i>
+    <span class="c-input-suffix" *ngIf="suffix">
+      <ng-container *stringTemplateOutlet="suffix">{{ suffix }}</ng-container>
+    </span>
+  </div>
+</ng-template>
+
+
+<ng-container *ngIf="isGroup">
+  <ng-template *ngTemplateOutlet="contentTemplate"></ng-template>
+</ng-container>
+
+<ng-template #contentTemplate>
+  <ng-content></ng-content>
+</ng-template>

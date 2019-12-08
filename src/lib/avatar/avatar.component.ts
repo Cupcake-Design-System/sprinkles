@@ -5,90 +5,85 @@ import {
   HostBinding,
   Input,
   OnInit,
+  Renderer2,
   TemplateRef,
-  ViewChild,
-  ViewEncapsulation,
-  Renderer2
-} from '@angular/core';
-import { mixinColor, CupcakeFlavors, mixinSize, CupcakeSizes } from '../common';
+  ViewChild
+} from "@angular/core";
+import { CupcakeFlavors, CupcakeSizes, mixinColor, mixinSize } from "../common";
 
-
-const CLASS_BASE = 'avatar';
+const CLASS_BASE = "avatar";
 
 export class AvatarBase {
-  constructor(public renderer: Renderer2,  public mixinRef: ElementRef) { }
+  constructor(public renderer: Renderer2, public mixinRef: ElementRef) {}
 }
 
-export const AvatarMixinBase = mixinSize(mixinColor(AvatarBase, CLASS_BASE), CLASS_BASE);
-
+export const AvatarMixinBase = mixinSize(
+  mixinColor(AvatarBase, CLASS_BASE),
+  CLASS_BASE
+);
 
 export enum AvatarType {
-  DEFAULT = 'default',
-  IMAGE = 'image',
-  ICON = 'icon'
+  DEFAULT = "default",
+  IMAGE = "image",
+  ICON = "icon"
 }
 
 @Component({
-  selector: 'spr-avatar',
-  templateUrl: 'avatar.component.html'
+  selector: "spr-avatar",
+  templateUrl: "avatar.component.html"
 })
-export class AvatarComponent extends AvatarMixinBase implements OnInit, AfterViewInit {
+export class AvatarComponent extends AvatarMixinBase
+  implements OnInit, AfterViewInit {
   @Input() size: CupcakeSizes = undefined;
   @Input() color: CupcakeFlavors = CupcakeFlavors.Primary;
 
-  @ViewChild('image')
+  @ViewChild("image", { static: true })
   public image: ElementRef;
 
-  @ViewChild('defaultTemplate', {
-    read: TemplateRef
-  })
+  @ViewChild("defaultTemplate", { read: TemplateRef, static: true })
   protected defaultTemplate: TemplateRef<any>;
 
-  @ViewChild('imageTemplate', {
-    read: TemplateRef
+  @ViewChild("imageTemplate", {
+    read: TemplateRef,
+    static: true
   })
   protected imageTemplate: TemplateRef<any>;
 
-
-  @ViewChild('iconTemplate', {
-    read: TemplateRef
+  @ViewChild("iconTemplate", {
+    read: TemplateRef,
+    static: true
   })
   protected iconTemplate: TemplateRef<any>;
 
-  @HostBinding('class.c-avatar')
+  @HostBinding("class.c-avatar")
   cssClass = true;
 
-
-  @HostBinding('class.c-avatar-square') _square;
+  @HostBinding("class.c-avatar-square") _square;
   @Input() set square(val) {
     this._square = val !== undefined && val !== false ? true : undefined;
   }
 
-  @HostBinding('attr.data-status')
+  @HostBinding("attr.data-status")
   @Input()
   status: string;
 
-  @HostBinding('attr.data-badge')
+  @HostBinding("attr.data-badge")
   @Input()
   badge: string;
 
-
-  @HostBinding('attr.data-text')
+  @HostBinding("attr.data-text")
   @Input()
   initials: string;
-
 
   @Input()
   public icon: string;
 
-
   @Input()
   public src: string;
 
-  @HostBinding('style.background')
+  @HostBinding("style.background")
   @Input()
   public bgColor: string;
-
 
   get type(): AvatarType {
     if (this.src) {
@@ -113,11 +108,11 @@ export class AvatarComponent extends AvatarMixinBase implements OnInit, AfterVie
     }
   }
 
-  constructor(public renderer: Renderer2, public elementRef: ElementRef, ) {super(renderer, elementRef); }
-
-  public ngOnInit() {
+  constructor(public renderer: Renderer2, public elementRef: ElementRef) {
+    super(renderer, elementRef);
   }
 
-  public ngAfterViewInit() {
-  }
+  public ngOnInit() {}
+
+  public ngAfterViewInit() {}
 }

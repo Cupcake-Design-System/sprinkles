@@ -1,13 +1,33 @@
-import { Component, ChangeDetectionStrategy, Input, TemplateRef, Output, EventEmitter, ViewChild, ViewChildren, ElementRef, QueryList, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { IListItem, IListChangedEvent, IMoveFocusParams, ControlSide, IListSearchResult } from '../../types';
-import { Observable } from 'rxjs';
-import { takeUntilDestroy } from '../../../utilities/take-until-destroy';
-import { CupcakeSizes } from '../../../common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  QueryList,
+  TemplateRef,
+  ViewChild,
+  ViewChildren
+} from "@angular/core";
+import { Observable } from "rxjs";
+import { CupcakeSizes } from "../../../common";
+import { takeUntilDestroy } from "../../../utilities/take-until-destroy";
+import {
+  ControlSide,
+  IListChangedEvent,
+  IListItem,
+  IListSearchResult,
+  IMoveFocusParams
+} from "../../types";
 
 @Component({
-  selector: 'spr-select-panel-items',
-  templateUrl: './select-panel-items.component.html',
-  styleUrls: ['./select-panel-items.component.scss'],
+  selector: "spr-select-panel-items",
+  templateUrl: "./select-panel-items.component.html",
+  styleUrls: ["./select-panel-items.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectPanelItemsComponent implements OnInit, OnDestroy {
@@ -39,9 +59,9 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
   @Output()
   public moveFocus = new EventEmitter<IMoveFocusParams>();
 
-  @ViewChild('itemParent')
+  @ViewChild("itemParent", { static: true })
   public itemParent: ElementRef<HTMLElement>;
-  @ViewChildren('selectableItem')
+  @ViewChildren("selectableItem")
   public selectableItems: QueryList<ElementRef<HTMLElement>>;
 
   public wrappedItems: IItemWrapper[] = [];
@@ -52,25 +72,26 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
   private currentItemId: string | null = null;
   private readonly selectedItemMap = new Map<string, IListItem>();
 
-  constructor(private readonly changeDetector: ChangeDetectorRef) { }
+  constructor(private readonly changeDetector: ChangeDetectorRef) {}
 
   public ngOnInit() {
-    this.selectedItems$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(selectedItems => {
-      this.selectedItemMap.clear();
-      selectedItems.forEach(item => this.selectedItemMap.set(item.id, item));
-      this.calculateSelection();
+    this.selectedItems$
+      .pipe(takeUntilDestroy(this))
+      .subscribe(selectedItems => {
+        this.selectedItemMap.clear();
+        selectedItems.forEach(item => this.selectedItemMap.set(item.id, item));
+        this.calculateSelection();
 
-      this.changeDetector.markForCheck();
-    });
+        this.changeDetector.markForCheck();
+      });
 
-    this.searchResult$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(searchResult => {
+    this.searchResult$.pipe(takeUntilDestroy(this)).subscribe(searchResult => {
       this.isLoading = searchResult.isLoading;
       this.isTooManyResults = searchResult.isTooManyResults;
-      this.isEmpty = searchResult.items.length === 0 && !searchResult.isLoading && !searchResult.isTooManyResults;
+      this.isEmpty =
+        searchResult.items.length === 0 &&
+        !searchResult.isLoading &&
+        !searchResult.isTooManyResults;
 
       this.wrappedItems = searchResult.items.map(item => ({
         item,
@@ -91,37 +112,27 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
       this.changeDetector.markForCheck();
     });
 
-    this.toggleCurrent$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(() => {
+    this.toggleCurrent$.pipe(takeUntilDestroy(this)).subscribe(() => {
       this.toggleCurrentItem();
       this.changeDetector.markForCheck();
     });
 
-    this.moveUp$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(() => {
+    this.moveUp$.pipe(takeUntilDestroy(this)).subscribe(() => {
       this.moveCurrentUp();
       this.changeDetector.markForCheck();
     });
 
-    this.moveDown$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(() => {
+    this.moveDown$.pipe(takeUntilDestroy(this)).subscribe(() => {
       this.moveCurrentDown();
       this.changeDetector.markForCheck();
     });
 
-    this.moveTop$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(() => {
+    this.moveTop$.pipe(takeUntilDestroy(this)).subscribe(() => {
       this.moveCurrentTop();
       this.changeDetector.markForCheck();
     });
 
-    this.moveBottom$.pipe(
-      takeUntilDestroy(this)
-    ).subscribe(() => {
+    this.moveBottom$.pipe(takeUntilDestroy(this)).subscribe(() => {
       this.moveCurrentBottom();
       this.changeDetector.markForCheck();
     });
@@ -132,7 +143,7 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
     this.setCurrentItem(item.item.id);
   }
 
-  public ngOnDestroy() { }
+  public ngOnDestroy() {}
 
   public trackItems(_index: number, item: IItemWrapper) {
     return item.item.id;
@@ -143,7 +154,9 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const currentItem = this.wrappedItems.find(item => item.item.id === this.currentItemId);
+    const currentItem = this.wrappedItems.find(
+      item => item.item.id === this.currentItemId
+    );
     if (currentItem == null) {
       return;
     }
@@ -226,7 +239,9 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.setCurrentItem(this.wrappedItems[this.wrappedItems.length - 1].item.id);
+    this.setCurrentItem(
+      this.wrappedItems[this.wrappedItems.length - 1].item.id
+    );
   }
 
   private setCurrentItem(itemId: string) {
@@ -246,11 +261,17 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
 
     const currentItemIndex = this.getCurrentItemIndex();
 
-    if (currentItemIndex == null || this.selectableItems == null || this.itemParent == null) {
+    if (
+      currentItemIndex == null ||
+      this.selectableItems == null ||
+      this.itemParent == null
+    ) {
       return;
     }
 
-    const elementRef = this.selectableItems.find((_item, i) => i === currentItemIndex);
+    const elementRef = this.selectableItems.find(
+      (_item, i) => i === currentItemIndex
+    );
 
     if (elementRef == null) {
       return;
@@ -268,8 +289,12 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (element.offsetTop + element.clientHeight >= parent.scrollTop + parent.clientHeight) {
-      parent.scrollTop = element.offsetTop + element.clientHeight - parent.offsetHeight;
+    if (
+      element.offsetTop + element.clientHeight >=
+      parent.scrollTop + parent.clientHeight
+    ) {
+      parent.scrollTop =
+        element.offsetTop + element.clientHeight - parent.offsetHeight;
     }
   }
 
@@ -277,7 +302,9 @@ export class SelectPanelItemsComponent implements OnInit, OnDestroy {
     if (this.currentItemId == null) {
       return null;
     }
-    return this.wrappedItems.findIndex(item => item.item.id === this.currentItemId);
+    return this.wrappedItems.findIndex(
+      item => item.item.id === this.currentItemId
+    );
   }
 }
 
